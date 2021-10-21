@@ -1,0 +1,16 @@
+.Submit--Ads{
+    width: 1349px;
+    margin: auto;
+    padding: auto;
+    justify-content: center;
+
+}
+
+.Container--Form{
+    width: 800px;
+    margin-left: 450px;
+}
+
+span{
+    color: red;
+}
