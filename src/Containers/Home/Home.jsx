@@ -1,11 +1,10 @@
-import { MyNavbar } from "../../Components/MyNavbar/MyNavbar"
-import { MyContent } from "../Content/MyContent"
+import MyNavbar from "../../Components/MyNavbar/MyNavbar"
+
 
 export const  Home =  () => {
     return(
         <div>Home page
-            <MyNavbar/>
-            <MyContent/>
+            <MyNavbar />
         </div>
     )
 }
