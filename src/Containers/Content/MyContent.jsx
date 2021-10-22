@@ -1,16 +1,19 @@
+
 import './MyContent.css';
 
 import BigCities from '../../Components/BigCities/BigCities';
-import Profile from '../../Components/Profile/Profile';
+import ListingCards from '../../Components/ListingCards/ListingCards';
 import CompTwoCities from '../../Components/CompTwoCities/CompTwoCities';
 
 const MyContent = () => {
     return (
         <>
         <BigCities />
+         <ListingCards />
         <CompTwoCities />
-        {/* <Profile /> */}
+       
         </>
+
     )
 }
 

@@ -1,5 +1,8 @@
+
 export const PopularPage = () => {
     return (
-        <div>PopularPage</div>
+        <div>
+            PopularPage
+        </div>
     )
 }

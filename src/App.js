@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Home } from './Containers/Home/Home';
