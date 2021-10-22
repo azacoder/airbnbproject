@@ -1,3 +1,4 @@
+
 import './ListingCard.css'
 import {Card,Container,Image} from 'react-bootstrap'
 import { useEffect, useState } from 'react';
@@ -42,3 +43,4 @@ const HouseCart = ({data}) => {
              </Card>
     )
 }
+

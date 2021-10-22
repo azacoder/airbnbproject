@@ -1,5 +1,10 @@
-export const Modal = () => {
-    return(
-        <div>Modal component</div>
+import React from 'react';
+
+const Modala = () => {
+    return (
+       <>
+       </>
     )
 }
+
+export default Modala;
