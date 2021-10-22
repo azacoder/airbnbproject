@@ -1,16 +1,17 @@
-import { BtnPopular } from "../../Components/BtnPopular/BtnPopular"
-import { Cities } from "../../Components/Cities/Cities"
-import { CompTwoCities } from "../../Components/CompTwoCities/CompTwoCities"
-import { ListingCards } from "../../Components/ListingCards/ListingCards"
+import './MyContent.css';
 
-export const MyContent = () => {
-    return(
-        <div>
-            Content page
-            <Cities/>
-            <BtnPopular/>
-            <ListingCards/>
-            <CompTwoCities/>
-        </div>
+import BigCities from '../../Components/BigCities/BigCities';
+import Profile from '../../Components/Profile/Profile';
+import CompTwoCities from '../../Components/CompTwoCities/CompTwoCities';
+
+const MyContent = () => {
+    return (
+        <>
+        <BigCities />
+        <CompTwoCities />
+        {/* <Profile /> */}
+        </>
     )
 }
+
+export default MyContent;
