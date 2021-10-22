@@ -1,85 +1,89 @@
-[
-    {
-      "id": 0,
-      "title": "Spacious 2 story beach house",
-      "adress": "Togolok Moldo 115",
-      "image":
-      "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "price": 235,
-      "guests": 3,
-      "hometype": "Apartment",
-      "description":"Modern, clear, and iconic home of the Fresh Price.",
-      "city": "Bishkek"
-    },
-    {
-        "id": 1,
-        "title": "Spacious 2 story beach house",
-        "adress": "Baitik Baatyra 58",
-        "image":
-        "https://images.unsplash.com/photo-1593604340846-4fbe9763a8f3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-        "price": 710,
-        "guests": 4,
-        "hometype": "House",
-        "description": "Modern, clear, and iconic home of the Fresh Price.",
-        "city": "Osh"
-    },
-    {
-        "id": 2,
-        "title": "Spacious 2 story beach house",
-        "adress": "Chexova 13",
-        "image":
-        "https://images.unsplash.com/photo-1430285561322-7808604715df?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-        "price": 710,
-        "guests": 3,
-        "hometype": "House",
-        "description": "Modern, clear, and iconic home of the Fresh Price.",
-        "city": "Jalal-Abad"
-    },
-    {
-        "id": 3,
-        "title": "Spacious 2 story beach house",
-        "adress": "Moidunova 45",
-        "image":" ",
-        "price": 710,
-        "guests": 2,
-        "hometype": "Apartment",
-        "description": "Modern, clear, and iconic home of the Fresh Price.",
-        "city": "Batken"
-    },
-    {
-        "id": 4,
-        "title": "Spacious 2 story beach house",
-        "adress": "Karaeva 63",
-        "image":
-        "https://images.unsplash.com/photo-1622866306950-81d17097d458?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-        "price": 710,
-        "guests": 3,
-        "hometype": "House",
-        "description": "Modern, clear, and iconic home of the Fresh Price.",
-        "city": "Naryn"
-    },
-    {
-        "id": 5,
-        "title": "Spacious 2 story beach house",
-        "adress": "Beishenalieva 91",
-        "image":
-        "https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODV8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-        "price": 710,
-        "guests": 3,
-        "hometype": "House",
-        "description": "Modern, clear, and iconic home of the Fresh Price.",
-        "city": "Talas"
-    },
-    {
-        "id": 6,
-        "title": "Spacious 2 story beach house",
-        "adress": "Turusbekova 53",
-        "image":
-        "https://images.unsplash.com/photo-1486304873000-235643847519?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-        "price": 710,
-        "guests": 4,
-        "hometype": "Apartment",
-        "description": "Modern, clear, and iconic home of the Fresh Price.",
-        "city": "Yssyk-Kul"
-    }
-]
+{
+    "data":[
+        {
+          "id": 0,
+          "title": "Spacious 2 story beach house",
+          "adress": "Togolok Moldo 115",
+          "image":
+          "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          "price": 235,
+          "guests": 3,
+          "hometype": "Apartment",
+          "description":"Modern, clear, and iconic home of the Fresh Price.",
+          "city": "Bishkek"
+        },
+        {
+            "id": 1,
+            "title": "Spacious 2 story beach house",
+            "adress": "Baitik Baatyra 58",
+            "image":
+            "https://images.unsplash.com/photo-1593604340846-4fbe9763a8f3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "price": 710,
+            "guests": 4,
+            "hometype": "House",
+            "description": "Modern, clear, and iconic home of the Fresh Price.",
+            "city": "Osh"
+        },
+        {
+            "id": 2,
+            "title": "Spacious 2 story beach house",
+            "adress": "Chexova 13",
+            "image":
+            "https://images.unsplash.com/photo-1430285561322-7808604715df?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "price": 710,
+            "guests": 3,
+            "hometype": "House",
+            "description": "Modern, clear, and iconic home of the Fresh Price.",
+            "city": "Jalal-Abad"
+        },
+        {
+            "id": 3,
+            "title": "Spacious 2 story beach house",
+            "adress": "Moidunova 45",
+            "image":
+            "https://images.unsplash.com/photo-1622866306950-81d17097d458?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "price": 710,
+            "guests": 2,
+            "hometype": "Apartment",
+            "description": "Modern, clear, and iconic home of the Fresh Price.",
+            "city": "Batken"
+        },
+       
+        {
+            "id": 4,
+            "title": "Spacious 2 story beach house",
+            "adress": "Karaeva 63",
+            "image":
+            "https://images.unsplash.com/photo-1622866306950-81d17097d458?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "price": 710,
+            "guests": 3,
+            "hometype": "House",
+            "description": "Modern, clear, and iconic home of the Fresh Price.",
+            "city": "Naryn"
+        },
+        {
+            "id": 5,
+            "title": "Spacious 2 story beach house",
+            "adress": "Beishenalieva 91",
+            "image":
+            "https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODV8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "price": 710,
+            "guests": 3,
+            "hometype": "House",
+            "description": "Modern, clear, and iconic home of the Fresh Price.",
+            "city": "Talas"
+        },
+        {
+            "id": 6,
+            "title": "Spacious 2 story beach house",
+            "adress": "Turusbekova 53",
+            "image":
+            "https://images.unsplash.com/photo-1486304873000-235643847519?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "price": 710,
+            "guests": 4,
+            "hometype": "Apartment",
+            "description": "Modern, clear, and iconic home of the Fresh Price.",
+            "city": "Yssyk-Kul"
+        }
+    ]
+}

@@ -1,5 +1,9 @@
+
 export const BigCities = () => {
-    return(
-        <div>BigCities component</div>
-    )
+    
+   return (
+  <div>
+        BigCities
+  </div>
+   )
 }
