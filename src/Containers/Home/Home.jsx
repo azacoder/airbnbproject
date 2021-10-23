@@ -1,4 +1,3 @@
-
 import MyNavbar from "../../Components/MyNavbar/MyNavbar"
 import MyContent from "../Content/MyContent"
 
