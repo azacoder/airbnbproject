@@ -1,4 +1,3 @@
-
 import React from 'react'
 import './Profile.css';
 import { Button, Card, Col, Image } from 'react-bootstrap'
@@ -30,4 +29,5 @@ const Profile = () => {
 }
 
 export default Profile;
+
 
