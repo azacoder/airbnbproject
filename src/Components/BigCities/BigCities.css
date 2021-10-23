@@ -1,0 +1,35 @@
+.div1{
+    background-image: url('https://tinyhouse-blacksonic.herokuapp.com/static/media/map-background.c8201cdd.jpg') ;
+    margin:140px 130px;
+    color: rgb(44, 23, 138);
+}
+
+h1{
+    margin: 30px 0px;
+    margin-left: 15px;
+}
+
+.T{
+    color: white;
+    margin-top: -34px;
+    margin-left: 18px;
+    font-size: 18px;
+}
+.D{
+    color: white;
+    margin-top: -34px;
+    margin-left: 18px;
+    font-size: 18px;
+}
+.LA{
+    color: white;
+    margin-top: -34px;
+    margin-left: 18px;
+    font-size: 18px;
+}
+.L{
+    color: white;
+    margin-top: -34px;
+    margin-left: 18px;
+    font-size: 18px;
+}
