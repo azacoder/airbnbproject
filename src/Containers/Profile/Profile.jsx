@@ -5,7 +5,7 @@ import { Button, Card, Col, Image } from 'react-bootstrap'
 const Profile = () => {
     return (
         <>
-            <Card bg="light" style={{ margin: '0 auto', marginTop: '50px', width: '380px' }}>
+            <Card bg="light" style={{ margin: '0 auto', marginTop: '130px', width: '380px', height: '580px'}}>
                 <Image style={{ width: '90px', height: '60px', marginLeft: '140px', marginTop: '40px' }} src="https://www.easytutorial.com/wp-content/uploads/2020/03/create-user-account-admin-windows-10-easy-tutorial-how-to-340x160.png" roundedCircle />
                 <Card.Body className='bo'>
                     <Card.Title className='theme'>Details</Card.Title>
