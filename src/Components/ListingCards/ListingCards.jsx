@@ -1,10 +1,14 @@
 
 import './ListingCard.css'
-import {Card,Container,Image} from 'react-bootstrap'
+import {Card,Image} from 'react-bootstrap'
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom'
+
 
 export const ListingCards = () => {
     const [homeListings, setHomeListings] =  useState([]);
+    const dispatch = useDispatch(); 
 
   const fetchData = () => {
     fetch('/fakeHost/data.json').then(response => {
@@ -13,17 +17,25 @@ export const ListingCards = () => {
       setHomeListings(data)
     });
   }
- 
+
+
+  let getCards = (e) => {
+    dispatch({type:"GET_IDCARD", cardId:e})
+     
+    
+  }
 
   useEffect(() => {
      fetchData()
   }, []);
     
+ 
+  
     return(
-        <div className="myCards" >
+        <div  className="myCards" >
                 {
                     homeListings.map((el) => {
-                        return <HouseCart data={el} key={el.id} />
+                        return <HouseCart getCards={getCards} data={el} key={el.id} />
                     })
                 }
         </div>
@@ -32,7 +44,8 @@ export const ListingCards = () => {
 
 const HouseCart = ({data}) => {
     return (
-            <Card>
+      <Link to={`/product/${data.id}`}>
+               <Card id={data.id} >
             <Image src={data.image} className="img-card"/>
                    <Card.Body>
                    <span>{data.price}</span>
@@ -41,6 +54,8 @@ const HouseCart = ({data}) => {
                 <Card.Footer>{data.guests}</Card.Footer>
                    </Card.Body>
              </Card>
+        </Link>
     )
 }
+
 
