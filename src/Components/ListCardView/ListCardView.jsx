@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 
 export const ListCardView = () => {
     
-        const [homeListings, setHomeListings] =  useState([]);
+        
+    const [homeListings, setHomeListings] =  useState([]);
 
     
       const fetchData = () => {
