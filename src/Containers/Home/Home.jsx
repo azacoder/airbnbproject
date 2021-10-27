@@ -8,8 +8,6 @@ import { SubmitAds } from "../SubmitAds/SubmitAds";
 
 
 export const  Home =  () => {
-    
-    const valueId = useSelector(state=>state.cardId); 
 
     return(
         <BrowserRouter>
