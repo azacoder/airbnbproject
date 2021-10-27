@@ -1,0 +1,17 @@
+.min-div {
+    width: 500px;
+    height: 400px;
+}
+.pop-h3 {
+    font-size: 30px ;
+    color: #1d226c;
+    font-size: 600;
+    line-height: 1.35;
+}
+.pop-p {
+    font-size: 15px;
+}
+.pop-button {
+    color: white;
+    background-color: #1890ff;
+}
