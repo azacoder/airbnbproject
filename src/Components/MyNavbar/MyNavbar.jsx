@@ -16,7 +16,7 @@ const MyNavbar = () => {
     return (
         <>
             <Navbar className={style.Nav} fixed='top' bg="orange" expand="lg">
-                <Navbar.Brand href='/mycontent'>
+                <Navbar.Brand href='/'>
                     <Image style={{ 'margin': '0px 10px', 'width': '44px' }} src={home} thumbnail />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
