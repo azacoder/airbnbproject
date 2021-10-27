@@ -16,7 +16,7 @@ const MyNavbar = () => {
     return (
         <>
             <Navbar className={style.Nav} fixed='top' bg="orange" expand="lg">
-                <Navbar.Brand href="#">
+                <Navbar.Brand href='/mycontent'>
                     <Image style={{ 'margin': '0px 10px', 'width': '44px' }} src={home} thumbnail />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
@@ -40,11 +40,11 @@ const MyNavbar = () => {
                     </Form>
                 </Navbar.Collapse>
                 <Nav>
-                    <Nav.Link style={{ 'margin-top': '8px', }} href="#deets">
+                    <Nav.Link style={{ 'margin-top': '8px', }} href='/submitads' >
                         <Image style={{ 'margin': '0px 12px', 'margin-bottom': '4px', 'width': '17px' }} src={host} />Host</Nav.Link>
                     <Nav.Link eventKey={2} href="#memes">
                         <DropdownButton id="dropdown-basic-button" title="Your account">
-                                <Dropdown.Item href='#ac-1' >
+                                <Dropdown.Item href='/profile' >
                                     <Image style={{ 'margin': '5px 12px', 'margin-bottom': '12px', 'width': '15px' }} src={profile} />Profile
                                 </Dropdown.Item>
                                 <Dropdown.Item href="#/action-2">
