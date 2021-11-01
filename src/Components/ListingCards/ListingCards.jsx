@@ -1,6 +1,6 @@
 
 import './ListingCard.css'
-import {Card,Image} from 'react-bootstrap'
+import {Card,Col,Container,Image, Row} from 'react-bootstrap'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
@@ -33,7 +33,7 @@ export const ListingCards = () => {
   
     return(
         <div  className="myCards" >
-                {
+               {
                     homeListings.map((el) => {
                         return <HouseCart getCards={getCards} data={el} key={el.id} />
                     })
@@ -45,15 +45,21 @@ export const ListingCards = () => {
 const HouseCart = ({data}) => {
     return (
       <Link to={`/product/${data.id}`}>
-               <Card id={data.id} >
-            <Image src={data.image} className="img-card"/>
-                   <Card.Body>
-                   <span>{data.price}</span>
-                <Card.Title>{data.title}</Card.Title>
-                <Card.Header>{data.adress}</Card.Header>
-                <Card.Footer>{data.guests}</Card.Footer>
-                   </Card.Body>
-             </Card>
+             <Container >
+               <Row>
+                 <Col>
+                 <Card class="card-apart">
+                 <Card.Img variant="top" src={data.image} style={{ width: "15.4rem", 'height': '10rem'}}/>
+                 <Card.Body>
+                 <span className="price">${data.price}/day</span>
+                <b><Card.Title class="card-title-house">{data.title}</Card.Title ></b>
+                 <Card.Header class="card-header-adress">{data.adress}</Card.Header>
+                 <Card.Footer class="card-footer">{data.guests}</Card.Footer>
+                 </Card.Body>
+                 </Card>
+                 </Col>
+               </Row>
+             </Container>
         </Link>
     )
 }

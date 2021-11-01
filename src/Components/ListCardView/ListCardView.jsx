@@ -45,18 +45,18 @@ export const ListCardView = () => {
         <div className="title">
             <div className="adpage">
                <div className="cardbox">
-               <div><img src={el.image} alt="photo" /></div>
-                <div><span>{el.city}</span><span>{el.adress}</span></div>
-                <p>{el.title}</p>
+               <div className="img-div-card"><img src={el.image} alt="photo" /></div>
+                <div className="span-div"><span>{el.city}</span> | | <span>{el.adress}</span></div>
+                <p className="p-p-p">{el.title}</p>
                 <hr />
                 <p>User Name</p>
                 <hr />
-                <p>About this space</p>
+                <p className='p-p'>About this space</p>
                 <div>
-                  <button>{el.hometype}</button>
-                  <button>{el.guests}</button>
+                  <button className="btn-listcard">{el.hometype}</button>
+                  <button className="btn-listcard1">{el.guests} Guests</button>
                 </div>
-                <div>{el.description}</div>
+                <div className="div-dis">{el.description}</div>
 
                </div>
 
@@ -64,7 +64,7 @@ export const ListCardView = () => {
                   <div className="bookpadding">
                   <p className="price">${el.price}/day</p>
                   <hr />
-                  <p>Check In</p>
+                  <b><p>Check In</p></b>
                   <DatePicker 
                       selected={startDate} 
                       onChange={(date)=>{setStartDate(date)}}
@@ -73,7 +73,7 @@ export const ListCardView = () => {
                       maxDate={endDate}
                       placeholderText="Select date"/> 
                       
-                  <p>Check Out</p>
+                  <b><p>Check Out</p></b>
                   <DatePicker 
                       selected={endDate} 
                       onChange={(date)=>{setEndDate(date)}}
@@ -85,7 +85,7 @@ export const ListCardView = () => {
                   <Button className ={endDate === null || startDate === null ? "btn disabled btn-secondary btn-mg ": "btn active btn-primary btn-mg"} 
                           onClick={() => setModalShow(endDate === null || startDate === null ? false : true)} 
                           >Request to book</Button>
-                  <p>You won't be charged yet</p>
+                  <p className="p-button">You won't be charged yet</p>
                   </div>
                 </div>
                 <ModalBooking rentalDays = {rentalDays} price={el.price} show={modalShow} onHide={() => setModalShow(false)}/>
