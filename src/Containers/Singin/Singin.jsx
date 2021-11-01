@@ -58,6 +58,11 @@ initializeApp(config);
         <button onClick={func}>Sign in</button>
       </div>
     )
+
+}
+
+
   }
 
 export default Signin;
+
