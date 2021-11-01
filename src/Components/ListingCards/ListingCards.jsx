@@ -44,7 +44,7 @@ export const ListingCards = () => {
 
 const HouseCart = ({data}) => {
     return (
-      <Link to={`/product/${data.id}`}>
+      <Link to={`/product/${data.id}`} className="link">
              <Container >
                <Row>
                  <Col>
