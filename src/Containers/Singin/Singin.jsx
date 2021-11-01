@@ -3,3 +3,4 @@ export const Singin = () =>{
         <div>Singin page</div>
     )
 }
+
