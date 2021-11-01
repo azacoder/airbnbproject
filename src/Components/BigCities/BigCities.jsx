@@ -6,7 +6,7 @@ import T from '../../assets/image/toronto.jpg';
 import D from '../../assets/image/dubai.jpg';
 import LA from '../../assets/image/los-angeles.jpg';
 import L from '../../assets/image/london.jpg';
-import search1 from '../../assets/image/search1.svg';
+import search1 from '../../assets/image/search3.svg';
 
 const BigCities = () => {
     return (

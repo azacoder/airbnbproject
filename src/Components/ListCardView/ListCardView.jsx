@@ -54,7 +54,7 @@ export const ListCardView = () => {
                 <p className='p-p'>About this space</p>
                 <div>
                   <button className="btn-listcard">{el.hometype}</button>
-                  <button className="btn-listcard1">{el.guests}</button>
+                  <button className="btn-listcard1">{el.guests} Guests</button>
                 </div>
                 <div className="div-dis">{el.description}</div>
 

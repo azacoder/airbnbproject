@@ -2,7 +2,7 @@ import style from './MyNavbar.module.css';
 import React, { useState } from 'react';
 import { Button, Form, FormControl, Image, Nav, Navbar, } from 'react-bootstrap';
 import home from './../../assets/image/home.png';
-import search1 from './../../assets/image/search1.svg';
+import search1 from './../../assets/image/search3.svg';
 import host from './../../assets/image/1.png';
 import profile from './../../assets/image/profile.png';
 import log from './../../assets/image/log.jpg';
