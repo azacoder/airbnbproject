@@ -1,43 +1,41 @@
-// export const Singin = () =>{
-//     return(
-//         <div>Singin page</div>
-//     )
-// }
-
 import React, { Component } from "react";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-// import config from "./firebase";
+import config from "../../firebase/firebase";
 import { initializeApp } from "firebase/app";
+
 initializeApp(config);
 
-class Singin extends Component {
-  postData() {
-    try {
-      let result = fetch(
-        "http://ec2-3-68-80-211.eu-central-1.compute.amazonaws.com:8000/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            idToken:
-              "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg1ODI4YzU5Mjg0YTY5YjU0YjI3NDgzZTQ4N2MzYmQ0NmNkMmEyYjMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODA3OTY3MzQ1Nzg5LXVwaWdtMGdkbWI0dWtyOWoyZXFwYmlhNGZiaWdnYWRpLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODA3OTY3MzQ1Nzg5LXVwaWdtMGdkbWI0dWtyOWoyZXFwYmlhNGZiaWdnYWRpLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE2NzAyMTEyODY3NjUwODA4NDE2IiwiZW1haWwiOiJha2JhbGFldmJpbGFsOEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6Il9GNUZHby1JbWc1c2dteTc4bTdHQWciLCJpYXQiOjE2MzU2NjQwOTQsImV4cCI6MTYzNTY2NzY5NH0.lKizQCAw3glHq9fjQ1-KWkbp1foRhi_blSHcWrU11Eon8tw_9khWN48-7H12vL1GC3hT9Ts1g1XnEpet5MrxeQNGx0laTH_vOI2MM81gTUt8lc1P0aPueo1A70Aq4I9vIogszrFx2BUpBtUPdy1dwAvhlON33TdbIRQtWWRl-nkcFjzBCnaA_ERbH_WE-RPpXXT1qTbAUPAGeO9xDAg8y33zttBcDqQwZCbVQCvpXFK6kssM3FCLzKBz4emL7eEdCbt31uOM4tBWLxCXEGRBByHVucXtyjVLzyuimptSmRP_Xxdh0qCWzzB7YyK2H5jYDGZMdNyQC5GgnSMVd6PRGg",
-          }),
-        }
-      );
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  render() {
+// class Signin extends Component {
+
+//   postData() {
+//     try {
+//       let result = fetch(
+//         "http://ec2-3-68-80-211.eu-central-1.compute.amazonaws.com:8000/api/auth/login",
+//         {
+//           method: "POST",
+//           headers: {
+//             "content-type": "application/json",
+//           },
+//           body: JSON.stringify({
+//             idToken:
+//               "eyJhbGciOiJSUzI1NiIsImtpZCI6IjE1MjU1NWEyMjM3MWYxMGY0ZTIyZjFhY2U3NjJmYzUwZmYzYmVlMGMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQmlsYWwgQWtiYWxhZXYiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUFUWEFKd21UcVlxeER2ZlRqWGdQTndJVVhvS3lJcS1uMjRoaHBrN2xLN0xMUT1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9hdXRoLXByb2plY3QtY2U4YmUiLCJhdWQiOiJhdXRoLXByb2plY3QtY2U4YmUiLCJhdXRoX3RpbWUiOjE2MzU3NDc4NjcsInVzZXJfaWQiOiJmVTViSDlHRktIYUh5aDNJZWF2Rm5SN2U1eUMyIiwic3ViIjoiZlU1Ykg5R0ZLSGFIeWgzSWVhdkZuUjdlNXlDMiIsImlhdCI6MTYzNTc0Nzg2NywiZXhwIjoxNjM1NzUxNDY3LCJlbWFpbCI6ImFrYmFsYWV2YmlsYWw4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTE2NzAyMTEyODY3NjUwODA4NDE2Il0sImVtYWlsIjpbImFrYmFsYWV2YmlsYWw4QGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.WkcnZ7IEfPHVGtQhEBBETuY-QfQngEv8gs44XvORj9IfhtOuzYdU9tqQVf-g-R_eQ7bKZapaaGsN_J5Qm2IN0-_LLVQWGMBtMFKr8N6NDXqdeDJk3Nb1DtCmg-T2bTRyhOQE0XZa0Duwu97Zn-FRZeE3X8HPdTApMHqs_KCMDrRFH2yVnz38sP39yV_hQtoiZRonm_9MYtQZB4bs8QJOSgPHWX_lDDiyU4xSFfN5HarxrQgLT_emk0ejnE7BteWuIkuKGJmx_sM71G5eTeFjf2djgVQg6FehjBA1E4DgnnJHSIKmWRgt_uzCGudGoATlP4_Xi1aKNzRcq9JhMrQ2sw",
+//           }),
+//         }
+//       );
+//       console.log(result);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+//   render() {
+  const Signin = () => {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     const func = () => {
       signInWithPopup(auth, provider)
         .then((result) => {
           const credential = GoogleAuthProvider.credentialFromResult(result);
+          localStorage.setItem('idToken', credential.idToken)
           console.log(credential.idToken);
         })
 
@@ -47,14 +45,19 @@ class Singin extends Component {
           const email = error.email;
           const credential = GoogleAuthProvider.credentialFromError(error);
         });
+        // this.postData()
     };
-    return (
-      <div className="App">
-        <button onClick={() => this.postData()}>Post</button>
-        <button onClick={func} >Sign in</button>
-      </div>
-    );
-  }
-}
 
-export default Singin;
+    // const funcTwo = () => {
+    //   func(); 
+    //   this.postData();
+    // }
+    return (
+      <div>
+        {/* <button onClick={() => this.postData()}>Post</button> */}
+        <button onClick={func}>Sign in</button>
+      </div>
+    )
+  }
+
+export default Signin;
