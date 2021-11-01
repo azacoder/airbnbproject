@@ -28,3 +28,7 @@
 .price {
     color:#1d226c;
 }
+.link {
+    text-decoration: none;
+    margin-bottom: 30px;
+}
