@@ -1,9 +1,12 @@
 import './SubmitAds.css'; 
 import { Container, Form, Button, ButtonGroup} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 
 
 export const SubmitAds = () => {
+    const [color, setColor] = useState("white")
+    const click = () => setColor("blue")
     return(
         <>
             <Container className="Submit--Ads">
@@ -12,7 +15,7 @@ export const SubmitAds = () => {
                 <p className="sub-mini-text">In this form, we'll collect some basic and additional information about your listing.</p>
                 <p><span>*</span> Home type</p>
                 <ButtonGroup aria-label="Basic example" className="mb-3">
-                <Button variant="outline-primary">Apartment</Button>
+                <Button onClick={click} variant="outline-primary">Apartment</Button>
                 <Button variant="outline-primary">House</Button>
                 </ButtonGroup>
                 <Form.Group className="mb-3" controlId="formGroupGuest">

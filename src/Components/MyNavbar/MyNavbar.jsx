@@ -1,6 +1,6 @@
 import style from './MyNavbar.module.css';
 import React, { useState } from 'react';
-import { Button, Dropdown, DropdownButton, Form, FormControl, Image, Nav, Navbar, } from 'react-bootstrap';
+import { Button, Form, FormControl, Image, Nav, Navbar, } from 'react-bootstrap';
 import home from './../../assets/image/home.png';
 import search1 from './../../assets/image/search1.svg';
 import host from './../../assets/image/1.png';
@@ -15,7 +15,7 @@ const MyNavbar = () => {
     const handleShow = () => setShow(true);
     return (
         <>
-            <Navbar className={style.Nav} fixed='top' bg="orange" expand="lg">
+            <Navbar className={style.Nav} fixed='top' expand="lg">
                 <Navbar.Brand href='/'>
                     <Image style={{ 'margin': '0px 10px', 'width': '44px' }} src={home} thumbnail />
                 </Navbar.Brand>
@@ -40,19 +40,9 @@ const MyNavbar = () => {
                     </Form>
                 </Navbar.Collapse>
                 <Nav>
-                    <Nav.Link style={{ 'margin-top': '8px', }} href='/submitads' >
+                    <Nav.Link style={{ 'margin-top': '8px', 'marginRight': '15px' }} href='/submitads' >
                         <Image style={{ 'margin': '0px 12px', 'margin-bottom': '4px', 'width': '17px' }} src={host} />Host</Nav.Link>
-                    <Nav.Link eventKey={2} href="#memes">
-                        <DropdownButton id="dropdown-basic-button" title="Your account">
-                                <Dropdown.Item href='/profile' >
-                                    <Image style={{ 'margin': '5px 12px', 'margin-bottom': '12px', 'width': '15px' }} src={profile} />Profile
-                                </Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">
-                                    <Image style={{ 'margin': '5px 10px', 'width': '20px' }} src={log} onClick={setShow} />
-                                    Log out</Dropdown.Item>
-                        </DropdownButton>
-
-                    </Nav.Link>
+                    <Button style={{'marginRight': '35px'}} >Sing in</Button>
                 </Nav>
             </Navbar>
         </>
