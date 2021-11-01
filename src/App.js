@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Home } from './Containers/Home/Home';
 
-function App() {
+export function App() {
   return (
     <div>
       <Home/>
@@ -11,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+
