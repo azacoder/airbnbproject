@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ListCardView } from "../../Components/ListCardView/ListCardView";
 import MyNavbar from "../../Components/MyNavbar/MyNavbar"

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Home } from './Containers/Home/Home';
 import Singin from './Containers/Singin/Singin';
 
-function App() {
+export function App() {
   return (
     <div>
       <Home/>
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+
