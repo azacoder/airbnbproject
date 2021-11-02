@@ -28,41 +28,36 @@ initializeApp(config);
 //     }
 //   }
 //   render() {
-  const Signin = () => {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-    const func = () => {
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          localStorage.setItem('idToken', credential.idToken)
-          console.log(credential.idToken);
-        })
+const Signin = () => {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  const func = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        localStorage.setItem("idToken", credential.idToken);
+        console.log(credential.idToken);
+      })
 
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          const email = error.email;
-          const credential = GoogleAuthProvider.credentialFromError(error);
-        });
-        // this.postData()
-    };
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+    // this.postData()
+  };
 
-    // const funcTwo = () => {
-    //   func(); 
-    //   this.postData();
-    // }
-    return (
-      <div>
-        {/* <button onClick={() => this.postData()}>Post</button> */}
-        <button onClick={func}>Sign in</button>
-      </div>
-    )
-
-}
-
-
-  
+  // const funcTwo = () => {
+  //   func();
+  //   this.postData();
+  // }
+  return (
+    <div>
+      {/* <button onClick={() => this.postData()}>Post</button> */}
+      <button onClick={func}>Sign in</button>
+    </div>
+  );
+};
 
 export default Signin;
-
