@@ -3,7 +3,7 @@ import { Button, Form, FormControl, Image, Nav, Navbar } from "react-bootstrap";
 import home from "./../../assets/image/home.png";
 import search1 from "./../../assets/image/search3.svg";
 import host from "./../../assets/image/1.png";
-import "./NavbarF.css";
+import "./NavbarPage.css";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import config from "../../firebase/firebase";
 import { initializeApp } from "firebase/app";
@@ -13,7 +13,7 @@ initializeApp(config);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
-export const NavbarF = () => {
+export const NavbarPage = () => {
   const BtnSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
