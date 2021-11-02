@@ -16,7 +16,7 @@ export const Home = () => {
           <Route exact path="/" component={Content} />
           <Route path="/submitads" component={SubmitAds} />
           <Route path="/profile" component={Profile} />
-          <Route path={`/product/:id`} component={ListCardView} />
+          <Route path="/product/:id" component={ListCardView} />
         </div>
       </Switch>
     </BrowserRouter>
