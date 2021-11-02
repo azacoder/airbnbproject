@@ -1,4 +1,3 @@
-export const defaultState = { 
-    cardId: null,
-    
-}; 
+export const defaultState = {
+  cardId: null,
+};

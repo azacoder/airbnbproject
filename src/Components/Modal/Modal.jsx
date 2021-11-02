@@ -1,12 +1,7 @@
-import React from 'react';
-
+import React from "react";
 
 const Modala = () => {
-    return (
-       <>
-
-       </>
-    )
-}
+  return <></>;
+};
 
 export default Modala;
