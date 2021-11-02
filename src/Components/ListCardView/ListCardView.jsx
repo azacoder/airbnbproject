@@ -52,7 +52,7 @@ export const ListCardView = () => {
               <img src={el.image} alt="photo" />
             </div>
             <div className="span-div">
-              <span>{el.city}</span> | | <span>{el.adress}</span>
+              <span>{el.city}</span> <span>|</span> <span>{el.adress}</span>
             </div>
             <p className="p-p-p">{el.title}</p>
             <hr />
