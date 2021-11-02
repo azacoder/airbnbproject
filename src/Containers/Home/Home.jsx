@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <div>
+        <>
           <div className="Navbar">
             <NavbarPage />
           </div>
@@ -17,7 +17,7 @@ export const Home = () => {
           <Route path="/submitads" component={SubmitAds} />
           <Route path="/profile" component={Profile} />
           <Route path="/product/:id" component={ListCardView} />
-        </div>
+        </>
       </Switch>
     </BrowserRouter>
   );
