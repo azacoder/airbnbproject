@@ -1,34 +1,34 @@
 .myCards {
-    /* width: 1349px; */
-    max-width: 1150px;
-    margin: auto;
-    /* padding-left: 55px; */
-    /* padding: auto; */
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: space-around;
+  /* width: 1349px; */
+  max-width: 1150px;
+  margin: auto;
+  /* padding-left: 55px; */
+  /* padding: auto; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .card-title-house {
-    font-size: 15px;
-    color: black;
+  font-size: 15px;
+  color: black;
 }
 .card-header-adress {
-    color: black;
-    font-size: 15px;
+  color: black;
+  font-size: 15px;
 }
 .card-footer {
-    color: grey;
-    font-size: 15px;
-    margin-top: 15px;
+  color: grey;
+  font-size: 15px;
+  margin-top: 15px;
 }
 .card-apart {
   width: 15.5rem;
   height: 17rem;
 }
 .price {
-    color:#1d226c;
+  color: #1d226c;
 }
 .link {
-    text-decoration: none;
-    margin-bottom: 30px;
+  text-decoration: none;
+  margin-bottom: 30px;
 }
