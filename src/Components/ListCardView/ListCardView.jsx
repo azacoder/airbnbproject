@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { ModalBooking } from "./ModalBooking/ModalBooking";
+import homeIcon from "../../assets/image/homeIcon.svg";
 
 export const ListCardView = () => {
   const { id } = useParams();
@@ -52,7 +53,9 @@ export const ListCardView = () => {
               <img src={el.image} alt="photo" />
             </div>
             <div className="span-div">
-              <span>{el.city}</span> <span>|</span> <span>{el.adress}</span>
+              <img className="homeicon" src={homeIcon} />
+              <span className="cityname">{el.city}</span> <span>|</span>{" "}
+              <span>{el.adress}</span>
             </div>
             <p className="p-p-p">{el.title}</p>
             <hr />
@@ -61,7 +64,7 @@ export const ListCardView = () => {
             <p className="p-p">About this space</p>
             <div>
               <button className="btn-listcard">{el.hometype}</button>
-              <button className="btn-listcard1">{el.guests} Guests</button>
+              <button className="btn-listcard">{el.guests} Guests</button>
             </div>
             <div className="div-dis">{el.description}</div>
           </div>
