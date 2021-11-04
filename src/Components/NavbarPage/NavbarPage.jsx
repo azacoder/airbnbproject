@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, FormControl, Image, Nav, Navbar } from "react-bootstrap";
 import home from "./../../assets/image/home.png";
 import search1 from "./../../assets/image/search3.svg";
@@ -7,6 +7,7 @@ import "./NavbarPage.css";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import config from "../../firebase/firebase";
 import { initializeApp } from "firebase/app";
+import { User } from "./avatarka";
 
 initializeApp(config);
 
@@ -14,6 +15,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
 export const NavbarPage = () => {
+  const [changeProfile, setChangeProfile] = useState(false);
   const BtnSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -75,9 +77,13 @@ export const NavbarPage = () => {
             <Image className="hostI" src={host} />
             Host
           </Nav.Link>
-          <Button value="primary" onClick={BtnSignIn}>
-            Sign in
-          </Button>
+          {changeProfile ? (
+            <User/>
+          ) : (
+            <Button className="singin-btn" value="primary" onClick={BtnSignIn}>
+              Sign in
+            </Button>
+          )}
         </Nav>
       </Navbar>
     </>

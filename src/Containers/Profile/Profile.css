@@ -1,20 +1,30 @@
-/* .theme{
-    color: rgb(56, 5, 104);
-    margin: 20px auto;
+.card-profile {
+ margin: 0 auto;
+ margin-top: 50px;
+ width: 400px;
+ height: 550px;
+ background-color: white;
 }
-.acc{
-    margin: 30px auto;
+.image-profile {
+ width: 80px;
+ height: 60px;
+ margin-left: 140px;
+ margin-top: 40px;
+ border-radius: 100px;
 }
-.na{
-    margin: 20px auto;
+.theme {
+    color: #1d226c;
+    margin-bottom: 25px;
 }
-.str{
-    margin: 20px auto;
+.a-profile {
+    text-decoration: none;
 }
-.lt{
-    margin: 30px 0px ;
+.lt {
+    margin-top: 50px;
+    font-size: 14px;
 }
-
-.bo{
+.ltt {
+    font-size: 14px;
+    margin-top: 30px;
     margin-bottom: 30px;
-} */
+}
