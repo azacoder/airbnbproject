@@ -1,12 +1,11 @@
 import "./ListingCard.css";
 import { Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import guestIcon from "../../assets/image/guest_icon.svg";
 
 export const ListingCards = () => {
   const [homeListings, setHomeListings] = useState([]);
-  const dispatch = useDispatch();
 
   const fetchData = () => {
     fetch("/fakeHost/data.json")
@@ -17,11 +16,6 @@ export const ListingCards = () => {
         setHomeListings(data);
       });
   };
-
-  let getCards = (e) => {
-    dispatch({ type: "GET_IDCARD", cardId: e });
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -29,7 +23,7 @@ export const ListingCards = () => {
   return (
     <div className="myCards">
       {homeListings.map((el) => {
-        return <HouseCart getCards={getCards} data={el} key={el.id} />;
+        return <HouseCart data={el} key={el.id} />;
       })}
     </div>
   );
@@ -55,7 +49,14 @@ const HouseCart = ({ data }) => {
                 <Card.Header class="card-header-adress">
                   {data.adress}
                 </Card.Header>
-                <Card.Footer class="card-footer">{data.guests}</Card.Footer>
+                <Card.Footer class="card-footer">
+                  <img
+                    className="guest_icon"
+                    src={guestIcon}
+                    alt="guest_icon"
+                  />
+                  for {data.guests} guests
+                </Card.Footer>
               </Card.Body>
             </Card>
           </Col>

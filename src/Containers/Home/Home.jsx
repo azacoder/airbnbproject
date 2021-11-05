@@ -9,15 +9,15 @@ export const Home = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <div>
+        <>
           <div className="Navbar">
             <NavbarPage />
           </div>
           <Route exact path="/" component={Content} />
           <Route path="/submitads" component={SubmitAds} />
           <Route path="/profile" component={Profile} />
-          <Route path={`/product/:id`} component={ListCardView} />
-        </div>
+          <Route path="/product/:id" component={ListCardView} />
+        </>
       </Switch>
     </BrowserRouter>
   );

@@ -14,8 +14,7 @@ export function ModalBooking(props) {
           Modal heading
           <button
             onClick={props.onHide}
-            type="button"
-            class="btn-close"
+            className="btn-close"
             aria-label="Close"
           ></button>
         </Modal.Title>
