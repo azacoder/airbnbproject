@@ -8,3 +8,11 @@ export const reducer = (state = defaultState, actions) => {
       return state;
   }
 };
+
+
+const initialState = {
+  auth: {
+    idToken: ''
+  }
+}
+export default initialState;
