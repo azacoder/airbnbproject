@@ -39,7 +39,7 @@ const HouseCart = ({ data }) => {
               <Card.Img
                 variant="top"
                 src={data.image}
-                style={{ width: "15.4rem", height: "10rem" }}
+                className="card-img-list"
               />
               <Card.Body>
                 <span className="price">${data.price}/day</span>
