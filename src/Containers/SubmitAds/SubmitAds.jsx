@@ -86,12 +86,12 @@ export const SubmitAds = () => {
               <option>Жалал-абад</option>
               <option>Талас</option>
             </Form.Control>
-            <div className="mb-3">
-              <p>
-                <span>*</span> Image
-              </p>
-              <input type="file" className="custom-file-input" />
-            </div>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>
+              <span>*</span>Image
+            </Form.Label>
+            <Form.File label="Upload Image" />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGroupPrice">
             <Form.Label>
