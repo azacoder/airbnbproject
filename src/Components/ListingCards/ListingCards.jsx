@@ -1,5 +1,5 @@
 import "./ListingCard.css";
-import { Card, Col, Container, Image, Row } from "react-bootstrap";
+import { Card, Carousel, Col, Container, Image, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -62,5 +62,4 @@ const HouseCart = ({ data }) => {
         </Row>
       </Container>
     </Link>
-  );
-};
+  )}
