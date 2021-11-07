@@ -1,26 +1,22 @@
-import { Modal, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button, CloseButton } from "react-bootstrap";
+import "./ModalBooking.css";
 
 export function ModalBooking(props) {
   return (
     <Modal
       {...props}
-      size="lg"
+      size="mg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-          <button
-            onClick={props.onHide}
-            className="btn-close"
-            aria-label="Close"
-          ></button>
-        </Modal.Title>
+        <div className="headerModal">
+          <div className="textModal">Book your trip</div>
+          <input type="button" onClick={props.onHide} className="btn-close" />
+        </div>
       </Modal.Header>
       <Modal.Body>
-        <h4>Book your trip</h4>
+        <p>Enter your payment information to book the listing, inclusive.</p>
         <p>
           ${props.price} * {props.rentalDays} days = $
           {props.price * props.rentalDays}

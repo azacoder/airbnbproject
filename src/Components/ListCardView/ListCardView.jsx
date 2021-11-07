@@ -1,5 +1,4 @@
 import "./ListcardView.css";
-import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

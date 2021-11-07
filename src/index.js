@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { reducer } from "./store/reducer/reducer";
 import { App } from "./App";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-datepicker/dist/react-datepicker.css";
+
+import "./index.css";
+
 
 const store = createStore(reducer);
 

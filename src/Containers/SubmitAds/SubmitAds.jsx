@@ -85,6 +85,8 @@ export const SubmitAds = () => {
               <option>Баткен</option>
               <option>Жалал-абад</option>
               <option>Талас</option>
+              <option>Чуй</option>
+              <option>Ыссык-кол</option>
             </Form.Control>
           </Form.Group>
           <Form.Group>
