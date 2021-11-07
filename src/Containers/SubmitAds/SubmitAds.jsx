@@ -3,6 +3,18 @@ import { Container, Form, Button, ButtonGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
+const addCard = (idToken) => {
+  let resp = fetch("http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/upload/image", {
+    method: "POST", 
+    body: FormData({
+      image:"https://images.unsplash.com/photo-1430285561322-7808604715df?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    }),
+    headers: {
+    Authorization: `Bearer ${idToken}`,
+    }
+  })
+}
+
 export const SubmitAds = () => {
   const [/* color, */ setColor] = useState("white");
   const click = () => setColor("blue");

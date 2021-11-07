@@ -120,7 +120,6 @@ export const NavbarPage = () => {
         }
       );
       const data = await res.json();
-      // console.log("id: ", data);
       console.log(data);
     } catch (error) {
       console.log(error);

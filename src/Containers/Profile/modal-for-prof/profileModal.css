@@ -7,5 +7,17 @@
     padding: 8px;
     border: 1px solid rgba(128, 128, 128, 0.486);
     margin-left: 30px;
-    border: none;
+    outline: none;
+}
+.div-card-icon input[type=text]{
+    padding-left: 60px;
+}
+.div-card-icon {
+    position: relative;
+}
+.div-card-icon img {
+    position: absolute;
+    left: 30px;
+    bottom: 0px;
+    padding: 9px 8px;
 }

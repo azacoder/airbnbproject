@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Profile.css";
 import { Button, Card, Image } from "react-bootstrap";
 import { useState } from "react";
@@ -27,11 +27,11 @@ const Profile = () => {
           <hr />
           <Card.Title className="theme">Additional Details</Card.Title>
           <Card.Text className="ltt">
-            Interested in becoming a TinyHouse host? Register with your Stripe
-            account!
+            If you want to place an ad that you are renting an apartment or room
+            for daily rent, you will have to pay for it.
           </Card.Text>
           <Button variant="primary" onClick={() => setModalShow(true)}>
-            Connect with Stripe
+            Add payment
           </Button>
           <MyVerticallyCenteredModal
             show={modalShow}
@@ -51,5 +51,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-

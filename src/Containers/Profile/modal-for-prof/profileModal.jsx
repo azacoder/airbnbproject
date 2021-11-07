@@ -1,6 +1,7 @@
 import "./profileModal.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
+import Pay from '../../../assets/image/pay-card.svg'
 
 export const MyVerticallyCenteredModal = (props) => {
   return (
@@ -16,10 +17,14 @@ export const MyVerticallyCenteredModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <div className="div-card-icon">
         <input
-          placeholder="Номер карты                                                                                                                ММ/ГГ CVC"
+          type="text"
+          placeholder="Номер карты                                                                                                  ММ/ГГ CVC"
           className="input-pay-card"
         ></input>
+        <img src={Pay}/>
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Submit</Button>
