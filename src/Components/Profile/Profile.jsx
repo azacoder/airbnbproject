@@ -1,46 +1,43 @@
 import React from "react";
-import { Button, Col, Dropdown, Image, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./Profile.css";
+import profileIcon from '../../assets/image/profile.png'
+import logout from '../../assets/image/log.jpg'
+import { getAuth, signOut } from "@firebase/auth";
+import { useDispatch } from "react-redux";
+import { userAction } from "../../store/action/action";
 
 const Profile = (props) => {
+  const dispatch = useDispatch()
+  const auth = getAuth();
+  const logOutFunc = () => {
+    signOut(auth).then(() => {
+      localStorage.removeItem("IdTokenGoogle");
+      dispatch(userAction(null))
+
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   const dataUser = useSelector((state) => state.userData);
-  console.log(dataUser);
   return (
-    // <div>
-    //   <Col>
-    //     <Image className="avaImg" src={dataUser.avatar} roundedCircle />
-    //   </Col>
-    // </div>
-    // <OverlayTrigger
-    //   placement="auto"
-    //   overlay={<Tooltip id="button-tooltip-2">  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    //     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    //     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item></Tooltip>}
-    // >
-    //   {({ /* ref, */ ...triggerHandler }) => (
-    //     <Button
-    //       // variant="light"
-    //       {...triggerHandler}
-    //     // className="d-inline-flex align-items-center"
-    //     >
-    //       
-    //     </Button>
-    //   )}
-    // </OverlayTrigger>
-
-    <Dropdown>
-    <Dropdown.Toggle variant='light'>
-    <Image className="avaImg" src={dataUser.avatar} roundedCircle />
-    </Dropdown.Toggle>
-    
-    <Dropdown.Menu>
-      <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-      <Dropdown.Item href="#/action-2">Log out</Dropdown.Item>
-    </Dropdown.Menu>
-    </Dropdown>
+    <div class="right-menu">
+      <Image className="avaImg" src={dataUser.avatar} roundedCircle />
+      <div class="dropdown-menu">
+        <NavLink to='/profile_user'>
+          <img className='icons' src={profileIcon} />
+          Profile
+        </NavLink>
+        <NavLink to='/' onClick={logOutFunc} >
+          <img className='icons' src={logout} />
+          Log out
+        </NavLink>
+      </div>
+    </div>
   )
-
 };
 
 export default Profile;

@@ -19,7 +19,6 @@ const auth = getAuth();
 
 export const NavbarPage = () => {
   const dispatch = useDispatch();
-  //получаем данные из  сервера
   const UserFromStore = useSelector((state) => state.userData);
 
   const BtnSignIn = () => {
@@ -85,7 +84,7 @@ export const NavbarPage = () => {
           {UserFromStore !== null ? (
             <Profile />
           ) : (
-            <Button value="primary" onClick={BtnSignIn}>
+            <Button className='signin' value="primary" onClick={BtnSignIn}>
               Sign in
             </Button>
           )}

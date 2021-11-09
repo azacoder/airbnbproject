@@ -4,8 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
 export const SubmitAds = () => {
-  const [/* color, */ setColor] = useState("white");
+  const [color, setColor] = useState("white");
   const click = () => setColor("blue");
+  console.log(color);
   return (
     <>
       <Container className="Submit--Ads">

@@ -1,6 +1,4 @@
-export const defaultState = { 
-  
-  userData: null, 
-  userToken: null, 
-
-}; 
+export const defaultState = {
+  userData: null,
+  userToken: null,
+};
