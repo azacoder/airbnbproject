@@ -35,21 +35,21 @@ const HouseCart = ({ data }) => {
       <Container>
         <Row>
           <Col>
-            <Card class="card-apart">
+            <Card className="card-apart">
               <Card.Img
                 variant="top"
                 src={data.image}
-                style={{ width: "15.4rem", height: "10rem" }}
+               className="card-img-listing"
               />
               <Card.Body>
                 <span className="price">${data.price}/day</span>
                 <b>
-                  <Card.Title class="card-title-house">{data.title}</Card.Title>
+                  <Card.Title class="card-title-listing">{data.title}</Card.Title>
                 </b>
-                <Card.Header class="card-header-adress">
+                <p className="card-header-adress">
                   {data.adress}
-                </Card.Header>
-                <Card.Footer class="card-footer">
+                </p>
+                <Card.Footer className="card-footer">
                   <img
                     className="guest_icon"
                     src={guestIcon}
