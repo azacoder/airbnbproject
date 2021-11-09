@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ListCardView } from "../../Components/ListCardView/ListCardView";
 import { NavbarPage } from "../../Components/NavbarPage/NavbarPage";
 import Content from "../Content/Content";
-import Profile from "../Profile/Profile";
+import ProfileUser from "../Profile/ProfileUser";
 import { SubmitAds } from "../SubmitAds/SubmitAds";
 
 export const Home = () => {
@@ -15,7 +15,7 @@ export const Home = () => {
           </div>
           <Route exact path="/" component={Content} />
           <Route path="/submitads" component={SubmitAds} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" component={ProfileUser} />
           <Route path="/product/:id" component={ListCardView} />
         </>
       </Switch>

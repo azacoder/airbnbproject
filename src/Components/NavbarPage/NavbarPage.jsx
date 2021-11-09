@@ -8,7 +8,7 @@ import config from "../../firebase/firebase";
 import { Button, Form, FormControl, Image, Nav, Navbar } from "react-bootstrap";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import Profile from "../Profile/Profile";
+import Profile from "../ProfileNavbar/Profile";
 import { useSelector } from "react-redux";
 import { userAction, tokenAction } from "../../store/action/action";
 

@@ -3,7 +3,7 @@ import BigCities from "../../Components/BigCities/BigCities";
 import { ListingCards } from "../../Components/ListingCards/ListingCards";
 import { BtnPopular } from "../../Components/BtnPopular/BtnPopular";
 import TwoCities from "../../Components/TwoCities/TwoCities";
-import Profile from "../Profile/Profile";
+import ProfileUser from "../Profile/ProfileUser";
 
 const MyContent = () => {
   return (
@@ -14,7 +14,7 @@ const MyContent = () => {
         <ListingCards />
       </div>
       <TwoCities />
-      <Profile />
+      <ProfileUser />
     </>
   );
 };

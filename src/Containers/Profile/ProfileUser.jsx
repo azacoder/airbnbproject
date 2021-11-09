@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
-import "./Profile.css";
+import "./ProfileUser.css";
 import { Button, Card, Image } from "react-bootstrap";
 import { useState } from "react";
 import { MyVerticallyCenteredModal } from "./modal-for-prof/profileModal";
+import { useSelector } from "react-redux";
 
-const Profile = () => {
+const ProfileUser = (props) => {
+  const dataUsers = useSelector((state) => state.userData);
+  console.log(dataUsers);
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <>
       <Card className="card-profile">
-        <Image
-          className="image-profile"
-          src="https://www.easytutorial.com/wp-content/uploads/2020/03/create-user-account-admin-windows-10-easy-tutorial-how-to-340x160.png"
-          roundedCircle
-        />
+        <Image  className="image-profile"/>
         <Card.Body className="bo">
           <Card.Title className="theme">Details</Card.Title>
           <Card.Text className="acc">
@@ -50,6 +49,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
-
-
+export default ProfileUser;
