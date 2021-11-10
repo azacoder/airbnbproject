@@ -33,9 +33,10 @@ export function App() {
         return res.json();
       })
       .then((result) => {
-        setIsLoaded(false);
         dispatch(userAction(result.data));
         dispatch(tokenAction(token));
+        setIsLoaded(false);
+
       })
       .catch((error) => {
         console.log(error);
