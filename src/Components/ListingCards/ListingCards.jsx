@@ -1,5 +1,5 @@
 import "./ListingCard.css";
-import { Card, Col, Container, Image, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import guestIcon from "../../assets/image/guest_icon.svg";
@@ -39,16 +39,16 @@ const HouseCart = ({ data }) => {
               <Card.Img
                 variant="top"
                 src={data.image}
-               className="card-img-listing"
+                className="card-img-listing"
               />
               <Card.Body>
                 <span className="price">${data.price}/day</span>
                 <b>
-                  <Card.Title class="card-title-listing">{data.title}</Card.Title>
+                  <Card.Title class="card-title-listing">
+                    {data.title}
+                  </Card.Title>
                 </b>
-                <p className="card-header-adress">
-                  {data.adress}
-                </p>
+                <p className="card-header-adress">{data.adress}</p>
                 <Card.Footer className="card-footer">
                   <img
                     className="guest_icon"
