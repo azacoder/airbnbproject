@@ -11,6 +11,7 @@ import { initializeApp } from "firebase/app";
 import Profile from "../Profile/Profile";
 import { useSelector } from "react-redux";
 import { userAction, tokenAction } from "../../store/action/action";
+import { NavLink } from "react-router-dom";
 
 initializeApp(config);
 
@@ -19,7 +20,6 @@ const auth = getAuth();
 
 export const NavbarPage = () => {
   const dispatch = useDispatch();
-  //получаем данные из  сервера
   const UserFromStore = useSelector((state) => state.userData);
 
   const BtnSignIn = () => {
@@ -60,8 +60,10 @@ export const NavbarPage = () => {
   return (
     <>
       <Navbar className="Nav" fixed="top" expand="lg">
-        <Navbar.Brand href="/">
+        <Navbar.Brand>
+          <NavLink to = "/">
           <Image className="imgH" src={home} thumbnail />
+          </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -78,14 +80,14 @@ export const NavbarPage = () => {
           </Form>
         </Navbar.Collapse>
         <Nav>
-          <Nav.Link className="host" href="/submitads">
+          <NavLink className="host" to ="/submitads">
             <Image className="hostI" src={host} />
             Host
-          </Nav.Link>
+          </NavLink>
           {UserFromStore !== null ? (
             <Profile />
           ) : (
-            <Button value="primary" onClick={BtnSignIn}>
+            <Button className="signin" value="primary" onClick={BtnSignIn}>
               Sign in
             </Button>
           )}

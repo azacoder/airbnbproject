@@ -8,9 +8,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.card-title-house {
-  font-size: 15px;
+.card-title-listing {
   color: black;
+  font-size: 16px;
 }
 .card-header-adress {
   color: black;
@@ -22,8 +22,8 @@
   margin-top: 15px;
 }
 .card-apart {
-  width: 15.5rem;
-  height: 17rem;
+  width: 16rem;
+  height: 20rem;
 }
 .price {
   color: #1d226c;
@@ -38,4 +38,8 @@
   margin-bottom: 5px;
   margin-right: 5px;
   margin-left: 90px;
+}
+.card-img-listing {
+  width: 15,4rem;
+  height: 10rem;
 }

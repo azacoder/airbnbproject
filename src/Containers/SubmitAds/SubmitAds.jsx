@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 import Fetch from "../../api/request";
 
 export const SubmitAds = () => {
+
   const [statusHouse, setStatusHouse] = useState(false);
   const [statusApart, setStatusApart] = useState(false);
   const [isLoaded, setIsLoaded] = useState(true);
   const [img, setImg] = useState(" ");
   const [cityes, setCityes] = useState(" ");
 
-  /* ************** */
   const [formValues, setFormValues] = useState({
     type: "",
     numOfGuests: "",
@@ -23,7 +23,7 @@ export const SubmitAds = () => {
     price: " ",
   });
   console.log(formValues);
-  /* ********************* */
+  
   const handleChange = (e) => {
     const value = e.target.value;
     setFormValues({
@@ -58,7 +58,7 @@ export const SubmitAds = () => {
       [e.target.name]: btnValue,
     });
   };
-  /* *************************** */
+ 
   const btnVarHouse = statusHouse === true ? "primary" : "outline-primary";
   const btnVarApart = statusApart === true ? "primary" : "outline-primary";
 
@@ -69,7 +69,7 @@ export const SubmitAds = () => {
   };
 
   console.log(img);
-  /* *************************************** */
+  
   useEffect(() => {
     fetch(
       "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/cities/all",
@@ -93,7 +93,7 @@ export const SubmitAds = () => {
         setIsLoaded(false);
       });
   }, []);
-  /*  **************************************************** */
+ 
 
   function uploadFile() {
     var formData = new FormData();
@@ -138,7 +138,6 @@ export const SubmitAds = () => {
     }
   }
 
-  /* ************Отправка формы на сервер****************** */
 
   return (
     <>
