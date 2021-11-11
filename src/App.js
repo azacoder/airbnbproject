@@ -15,6 +15,29 @@ export function App() {
   const [isLoaded, setIsLoaded] = useState(true);
 
   useEffect(() => {
+
+    const tokenName = "IdTokenGoogle"
+    const token = localStorage.getItem(tokenName); 
+    fetch("http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/user/profile",
+    {
+      method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+      })
+      .then(
+        res => {
+          if(!res.ok){
+            throw new Error("token is not correct")
+          }
+          return res.json()
+        })
+      .then(
+        (result) => {
+          setIsLoaded(false);
+          dispatch(userAction(result.data));
+          dispatch(tokenAction(token));
+
     const tokenName = "IdTokenGoogle";
     const token = localStorage.getItem(tokenName);
     fetch(
@@ -29,6 +52,7 @@ export function App() {
       .then((res) => {
         if (!res.ok) {
           throw new Error("token is not correct");
+
         }
         return res.json();
       })
@@ -37,6 +61,10 @@ export function App() {
         dispatch(tokenAction(token));
         setIsLoaded(false);
 
+
+     
+  }, [])
+
       })
       .catch((error) => {
         console.log(error);
@@ -44,6 +72,7 @@ export function App() {
         localStorage.removeItem(tokenName);
       });
   }, []);
+
 
   return <div>{isLoaded ? <Spinner animation="border" /> : <Home />}</div>;
 }
