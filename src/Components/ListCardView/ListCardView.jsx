@@ -26,35 +26,43 @@ export const ListCardView = () => {
     setModalShow(endDate === null || startDate === null ? false : true);
   };
 
-  const fetchData = () => {
-    fetch("/fakeHost/data.json")
+  const linkServer = "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/"; 
+  useEffect(() => {
+    fetch(
+      "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/listing/all",
+      {
+        method: "GET",
+      }
+    )
       .then((response) => {
+        console.log(response);
         return response.json();
       })
-      .then(({ data }) => {
+      .then(({data}) => {
+        console.log(data);
         setHomeListings(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  };
-
-  useEffect(() => {
-    fetchData();
   }, []);
 
   let CardFilter = homeListings.filter((el) => {
     return el.id == id;
   });
+  console.log(CardFilter);
   return CardFilter.map((el) => {
     return (
       <div className="title">
         <div className="adpage">
           <div className="cardbox">
             <div className="img-div-card">
-              <img src={el.image} alt="photo" />
+              <img className="imgAd" src={linkServer + el.image.path} alt="photo" />
             </div>
             <div className="span-div">
               <img className="homeicon" src={homeIcon} />
-              <span className="cityname">{el.city}</span> <span>|</span>{" "}
-              <span>{el.adress}</span>
+              <span className="cityname">{el.city.title}</span> <span>|</span>{" "}
+              <span>{el.address}</span>
             </div>
             <p className="p-p-p">{el.title}</p>
             <hr />
@@ -62,8 +70,8 @@ export const ListCardView = () => {
             <hr />
             <p className="p-p">About this space</p>
             <div>
-              <button className="btn-listcard">{el.hometype}</button>
-              <button className="btn-listcard">{el.guests} Guests</button>
+              <button className="btn-listcard">{el.type}</button>
+              <button className="btn-listcard">{el.numOfGuests} Guests</button>
             </div>
             <div className="div-dis">{el.description}</div>
           </div>
