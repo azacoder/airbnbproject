@@ -59,6 +59,11 @@ hr {
 }
 .img-div-card {
   margin-bottom: 30px;
+ 
+}
+.imgAd{
+  width: 500px;
+  height: 350px;
 }
 .price {
   color: #1d226c;
