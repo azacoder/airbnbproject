@@ -13,7 +13,6 @@ export function App() {
   const tokenFromId = useSelector((state) => state);
   const UserFromStore = useSelector((state) => state);
   const [isLoaded, setIsLoaded] = useState(true);
-  console.log(userAction);
 
   useEffect(() => {
     const tokenName = "IdTokenGoogle"
@@ -37,7 +36,6 @@ export function App() {
           setIsLoaded(false);
           dispatch(userAction(result.data));
           dispatch(tokenAction(token));
-          console.log(result);
         }
        
       )
@@ -49,9 +47,6 @@ export function App() {
 
      
   }, [])
-  console.log(tokenFromId);
-  console.log(UserFromStore);
-  
 
   return (
     <div>{
