@@ -6,31 +6,39 @@ import guestIcon from "../../assets/image/guest_icon.svg";
 
 export const ListingCards = () => {
   const [homeListings, setHomeListings] = useState([]);
-
-  const fetchData = () => {
-    fetch("/fakeHost/data.json")
+  const linkServer = "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/"; 
+  useEffect(() => {
+    fetch(
+      "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/listing/all",
+      {
+        method: "GET",
+      }
+    )
       .then((response) => {
+        console.log(response);
         return response.json();
       })
-      .then(({ data }) => {
+      .then(({data}) => {
+        console.log(data);
         setHomeListings(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  };
-  useEffect(() => {
-    fetchData();
   }, []);
 
   return (
     <div className="myCards">
       {homeListings.map((el) => {
-        return <HouseCart data={el} key={el.id} />;
+        return <HouseCart data={el} key={el.id}  linkServer={linkServer}/>;
       })}
     </div>
   );
 };
 
-const HouseCart = ({ data }) => {
+const HouseCart = ({ data , linkServer}) => {
   return (
+    
     <Link to={`/product/${data.id}`} className="link">
       <Container>
         <Row>
@@ -38,7 +46,8 @@ const HouseCart = ({ data }) => {
             <Card className="card-apart">
               <Card.Img
                 variant="top"
-                src={data.image}
+                src={linkServer + data.image.path}
+                
                 className="card-img-listing"
               />
               <Card.Body>
@@ -48,14 +57,14 @@ const HouseCart = ({ data }) => {
                     {data.title}
                   </Card.Title>
                 </b>
-                <p className="card-header-adress">{data.adress}</p>
+                <p className="card-header-adress">{data.address}</p>
                 <Card.Footer className="card-footer">
                   <img
                     className="guest_icon"
                     src={guestIcon}
                     alt="guest_icon"
                   />
-                  for {data.guests} guests
+                  for {data.numOfGuests} guests
                 </Card.Footer>
               </Card.Body>
             </Card>
