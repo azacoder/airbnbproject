@@ -1,12 +1,18 @@
-.imgs {
+.imgTwoCyties {
   padding-top: 2.8rem;
   padding-bottom: 2rem;
   width: 72rem;
 }
-.textT {
+.textTheme {
   font-size: 20px;
   color: rgb(44, 23, 138);
 }
 .twoimg {
   width: 34.1rem;
+}
+
+.two-cities-title {
+  margin-bottom: -300px;
+  color: rgb(255, 255, 255);
+  text-align: center;
 }

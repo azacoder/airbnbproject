@@ -10,7 +10,7 @@ export const BtnPopular = () => {
           locations
         </p>
         <button type="button" class="btn btn-primary">
-          Popular listings in the United States
+          Popular listings in the Kyrgyzstan
         </button>
       </div>
     </div>
