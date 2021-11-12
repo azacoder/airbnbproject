@@ -4,6 +4,7 @@ import { NavbarPage } from "../../Components/NavbarPage/NavbarPage";
 import Content from "../Content/Content";
 import ProfileUser from "../ProfileUser/ProfileUser";
 import { SubmitAds } from "../SubmitAds/SubmitAds";
+import Successfullpage from "../SubmitAds/SuccessFullPage/SuccessFullPage";
 
 export const Home = () => {
   return (
@@ -17,6 +18,7 @@ export const Home = () => {
           <Route path="/submitads" component={SubmitAds} />
           <Route path="/profile_user" component={ProfileUser} />
           <Route path="/product/:id" component={ListCardView} />
+          <Route path="/successfullpage" component={Successfullpage} />
         </>
       </Switch>
     </BrowserRouter>

@@ -1,0 +1,12 @@
+.successAd {
+  display: inline-block;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.successDiv {
+  font-size: 20px;
+  color: green;
+}
+.linkSuccess {
+  text-decoration: none;
+}
