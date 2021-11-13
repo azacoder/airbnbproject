@@ -7,36 +7,45 @@ import {
   Image,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Redirect } from "react-router";
 import search1 from "../../assets/image/search3.svg";
 import Bishkek from '../../assets/image/bishkek.jpg'
-import JalalAbad from '../../assets/image/jalalabad.jpg';
+import JalalAbad from '../../assets/image/jalal-abad.jpg';
 import Talas from '../../assets/image/talas.jpg'
-import YssykKul from '../../assets/image/YssykKol2.jpg';
-import Osh from '../../assets/image/osh.jpg'
-import Chuy from '../../assets/image/towers.jpeg';
-import Batken from '../../assets/image/aigul.jpg'
+import YssykKul from '../../assets/image/yssykkol.jpg';
+import Osh from '../../assets/image/osh1.jpg'
+import Chuy from '../../assets/image/chuy.jpg';
+import Batken from '../../assets/image/aigul1.jpg'
 import Naryn from '../../assets/image/naryn2.jpg'
+import Fetch from "../../api/request";
+import { useSelector } from "react-redux";
+import { cityesAction } from "../../store/action/action";
 
 const BigCities = () => {
+  const cityesFromStore = useSelector((state) => state.cityData);
+  const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(true);
-  const [cityes, setCityes] = useState(" ");
+  const [cityes, setCityes] = useState("");
+  const [idCityes, setIdCityes] = useState("");
+  const [successUploadCityes, setSuccessUploadCityes] = useState(false);
 
   const imgMass = [
     {
       id: 0,
-      img: Bishkek
+      img: Bishkek,
     },
     {
       id: 1,
-      img: JalalAbad
+      img: JalalAbad,
     },
     {
       id: 2,
-      img: Talas
+      img: Talas,
     },
     {
       id: 3,
-      img: YssykKul
+      img: YssykKul,
     },
     {
       id: 5,
@@ -44,7 +53,7 @@ const BigCities = () => {
     },
     {
       id: 4,
-      img: Osh
+      img: Osh,
     },
     {
       id: 6,
@@ -53,9 +62,9 @@ const BigCities = () => {
     {
       id: 7,
       img: Naryn,
-    }
+    },
   ];
-
+  
   useEffect(() => {
     fetch(
       "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/cities/all",
@@ -79,13 +88,31 @@ const BigCities = () => {
       });
   }, []);
 
-
   const array3 = imgMass.map((item, index) => ({
     ...item,
     ...cityes[index],
   }));
 
-  console.log(array3);
+  const getCityId = (e) => {
+    let city = e.target.id;
+
+    const getHouses = () => {
+      Fetch(`listing/all?cityId=${city}`, {
+        method: "GET",
+      }).then((response) => {
+        console.log(response);
+        dispatch(cityesAction(response));
+        setSuccessUploadCityes(true);
+      });
+    };
+    getHouses(city);
+  };
+  console.log(idCityes);
+
+  console.log(cityesFromStore);
+  if (successUploadCityes) {
+    return <Redirect to="/cityes" />;
+  }
 
   return (
     <>
@@ -110,7 +137,13 @@ const BigCities = () => {
               {array3.map((el) => {
                 return (
                   <div className="box">
-                    <img className="imgCityes" src={el.img} alt="" />
+                    <img
+                      onClick={getCityId}
+                      className="imgCityes"
+                      id={el.id}
+                      src={el.img}
+                      alt=""
+                    />
                     <p class="imgText">{el.title}</p>
                   </div>
                 );

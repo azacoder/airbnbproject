@@ -25,6 +25,7 @@ export const ListingCards = () => {
       .catch((error) => {
         console.log(error);
       });
+      
   }, []);
 
   return (
