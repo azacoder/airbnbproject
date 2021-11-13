@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router";
+
 import "./BigCities.css";
 import {
   Card,
@@ -15,8 +17,37 @@ import D from "../../assets/image/dubai.jpg";
 import LA from "../../assets/image/los-angeles.jpg";
 import L from "../../assets/image/london.jpg";
 import search1 from "../../assets/image/search3.svg";
+import Fetch from "../../api/request";
+import { useDispatch } from "react-redux";
+import { houseAction } from "../../store/action/action";
+import { Link } from "react-router-dom";
 
 const BigCities = () => {
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState("");
+  const [uploadSearch, setUploadSearch] = useState(false); 
+  console.log(inputValue);
+
+  const handleChangeInput = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+  };
+
+  const getSearch = () => {
+    Fetch(`listing/search?value=${inputValue}`, { method: "GET" }).then(
+      (response) => {
+        console.log(response);
+        dispatch(houseAction(response));
+        setUploadSearch(true); 
+      }
+    );
+  };
+
+  if(uploadSearch) { 
+    return <Redirect to='/search' />
+  }
+  console.log(uploadSearch);
+
   return (
     <div className="main-div">
       <div className="div1">
@@ -27,10 +58,11 @@ const BigCities = () => {
             placeholder="Search 'San Fransisco'"
             className="mr-2"
             aria-label="Search"
+            onChange={handleChangeInput}
           />
-          <Button>
-            <Image className="imgS" src={search1} />
-          </Button>
+            <Button onClick={getSearch}>
+              <Image className="imgS" src={search1} />
+            </Button>
         </Form>
         <Container className="cont">
           <Row>

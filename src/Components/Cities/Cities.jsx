@@ -1,3 +1,7 @@
 export const Cities = () => {
-  return <div>Cities page</div>;
+  return (
+    <div>
+      Cities
+    </div>
+  );
 };

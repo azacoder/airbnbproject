@@ -1,10 +1,11 @@
 import "./ListcardView.css";
 import DatePicker from "react-datepicker";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { ModalBooking } from "./ModalBooking/ModalBooking";
 import homeIcon from "../../assets/image/homeIcon.svg";
+import Fetch from "../../api/request";
 
 export const ListCardView = () => {
   const { id } = useParams();
@@ -26,26 +27,12 @@ export const ListCardView = () => {
     setModalShow(endDate === null || startDate === null ? false : true);
   };
 
-  const linkServer = "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/"; 
-  useEffect(() => {
-    fetch(
-      "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/listing/all",
-      {
-        method: "GET",
-      }
-    )
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then(({data}) => {
-        console.log(data);
-        setHomeListings(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const linkServer =
+    "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
+
+ Fetch("listing/all", { method: "GET" }).then((response) => {
+    setHomeListings(response)
+  });
 
   let CardFilter = homeListings.filter((el) => {
     return el.id == id;
@@ -57,7 +44,11 @@ export const ListCardView = () => {
         <div className="adpage">
           <div className="cardbox">
             <div className="img-div-card">
-              <img className="imgAd" src={linkServer + el.image.path} alt="photo" />
+              <img
+                className="imgAd"
+                src={linkServer + el.image.path}
+                alt="photo"
+              />
             </div>
             <div className="span-div">
               <img className="homeicon" src={homeIcon} />
