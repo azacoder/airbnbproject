@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./NavbarPage.css";
 import search1 from "./../../assets/image/search3.svg";
@@ -10,7 +10,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import Profile from "../Profile/Profile";
 import { useSelector } from "react-redux";
-import { userAction, tokenAction } from "../../store/action/action";
+import { userAction, tokenAction, houseAction } from "../../store/action/action";
 import { NavLink } from "react-router-dom";
 
 initializeApp(config);
@@ -57,6 +57,8 @@ export const NavbarPage = () => {
       console.log(error);
     }
   }
+  
+
   return (
     <>
       <Navbar className="Nav" fixed="top" expand="lg">
@@ -67,7 +69,7 @@ export const NavbarPage = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Form className="searchH">
+          {/* <Form className="searchH">
             <FormControl
               type="search"
               placeholder="Search 'San Fransisco'"
@@ -77,7 +79,7 @@ export const NavbarPage = () => {
             <Button>
               <Image className="searchI" src={search1} />
             </Button>
-          </Form>
+          </Form> */}
         </Navbar.Collapse>
         <Nav>
           <NavLink className="host" to ="/submitads">

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import guestIcon from "../../assets/image/guest_icon.svg"; 
  
 export const Cities = () => { 
-  // const CityesFromStore = useSelector((state) => state.cityData); 
+  
   const CityesFromStore = useSelector(state => state.cityData)
   console.log('CityesFromStore', CityesFromStore); 
   const linkServer = 'http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/';
@@ -50,3 +50,4 @@ export const Cities = () => {
     </div> 
   ); 
 };
+

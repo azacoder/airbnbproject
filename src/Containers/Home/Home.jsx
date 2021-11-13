@@ -5,7 +5,8 @@ import Content from "../Content/Content";
 import ProfileUser from "../ProfileUser/ProfileUser"; 
 import { SubmitAds } from "../SubmitAds/SubmitAds"; 
 import Successfullpage from "../SubmitAds/SuccessFullPage/SuccessFullPage"; 
-import { Cities } from "../../Components/Cities/Cities"; 
+import { Cities } from "../../Components/Cities/Cities";
+import { Search } from "../../Components/SearchPage/searchPage";
  
 export const Home = () => { 
   return ( 
@@ -21,8 +22,10 @@ export const Home = () => {
           <Route path="/product/:id" component={ListCardView} /> 
           <Route path="/successfullpage" component={Successfullpage} /> 
           <Route path="/cityes" component={Cities} /> 
+          <Route path="/search" component={Search}/>
         </> 
       </Switch> 
     </BrowserRouter> 
   ); 
 };
+

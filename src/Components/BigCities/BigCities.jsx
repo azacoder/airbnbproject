@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./BigCities.css";
+import { Redirect } from "react-router";
 import {
   Form,
   FormControl,
   Button,
   Image,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import Fetch from "../../api/request";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
+import { houseAction } from "../../store/action/action";
+import { cityesAction } from "../../store/action/action";
 import search1 from "../../assets/image/search3.svg";
 import Bishkek from '../../assets/image/bishkek.jpg'
 import JalalAbad from '../../assets/image/jalal-abad.jpg';
@@ -18,11 +23,12 @@ import Osh from '../../assets/image/osh1.jpg'
 import Chuy from '../../assets/image/chuy.jpg';
 import Batken from '../../assets/image/aigul1.jpg'
 import Naryn from '../../assets/image/naryn2.jpg'
-import Fetch from "../../api/request";
-import { useSelector } from "react-redux";
-import { cityesAction } from "../../store/action/action";
 
-const BigCities = () => {
+
+
+const BigCities = () => 
+  const [inputValue, setInputValue] = useState("");
+  const [uploadSearch, setUploadSearch] = useState(false); 
   const cityesFromStore = useSelector((state) => state.cityData);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(true);
@@ -64,6 +70,25 @@ const BigCities = () => {
       img: Naryn,
     },
   ];
+
+  const handleChangeInput = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+  };
+
+  const getSearch = () => {
+    Fetch(listing/search?value=${inputValue}, { method: "GET" }).then(
+      (response) => {
+        console.log(response);
+        dispatch(houseAction(response));
+        setUploadSearch(true); 
+      }
+    );
+  };
+
+ if(uploadSearch) { 
+    return <Redirect to='/search' />
+  }
   
   useEffect(() => {
     fetch(
@@ -97,7 +122,7 @@ const BigCities = () => {
     let city = e.target.id;
 
     const getHouses = () => {
-      Fetch(`listing/all?cityId=${city}`, {
+      Fetch(listing/all?cityId=${city}, {
         method: "GET",
       }).then((response) => {
         console.log(response);
@@ -113,8 +138,7 @@ const BigCities = () => {
   if (successUploadCityes) {
     return <Redirect to="/cityes" />;
   }
-
-  return (
+return (
     <>
       {isLoaded ? (
         <p>Loading....</p>
@@ -128,8 +152,9 @@ const BigCities = () => {
                 placeholder="Search 'San Fransisco'"
                 className="mr-2"
                 aria-label="Search"
+              onChange={handleChangeInput}
               />
-              <Button>
+              <Button onClick={getSearch}>
                 <Image className="imgSearch" src={search1} />
               </Button>
             </Form>
@@ -157,3 +182,4 @@ const BigCities = () => {
 };
 
 export default BigCities;
+
