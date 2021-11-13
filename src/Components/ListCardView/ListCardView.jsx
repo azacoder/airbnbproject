@@ -30,14 +30,16 @@ export const ListCardView = () => {
   const linkServer =
     "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
 
- Fetch("listing/all", { method: "GET" }).then((response) => {
-    setHomeListings(response)
+  Fetch("listing/all", { method: "GET" }).then((response) => {
+    setHomeListings(response);
   });
 
   let CardFilter = homeListings.filter((el) => {
     return el.id == id;
   });
-  console.log(CardFilter);
+  /* ***************Booking code**************** */
+
+  /* ********************************* */
   return CardFilter.map((el) => {
     return (
       <div className="title">
