@@ -4,14 +4,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import guestIcon from "../../assets/image/guest_icon.svg";
 import Fetch from "../../api/request";
+import React, { useEffect } from "react";
 
 export const ListingCards = () => {
   const [homeListings, setHomeListings] = useState([]);
-  const linkServer = "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/"; 
+  const linkServer =
+    "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
   useEffect(() => {
     Fetch("listing/all", { method: "GET" }).then((response) => {
-    setHomeListings(response)
-  }); []);
+      setHomeListings(response);
+    });
+  }, []);
   return (
     <div className="myCards">
       {homeListings.map((el) => {
