@@ -9,9 +9,9 @@ import {
 import { useState, useEffect } from "react";
 import search1 from "../../assets/image/search3.svg";
 import Bishkek from '../../assets/image/bishkek.jpg'
-import JalalAbad from '../../assets/image/jalalabad.jpg';
+import JalalAbad from '../../assets/image/jalal-abad1.jpg';
 import Talas from '../../assets/image/talas.jpg'
-import YssykKul from '../../assets/image/YssykKol2.jpg';
+import YssykKul from '../../assets/image/yssykkol.jpg';
 import Osh from '../../assets/image/osh.jpg'
 import Chuy from '../../assets/image/towers.jpeg';
 import Batken from '../../assets/image/aigul.jpg'
