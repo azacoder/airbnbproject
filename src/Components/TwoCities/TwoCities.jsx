@@ -1,0 +1,39 @@
+import React from "react";
+import YssykKol from '../../assets/image/yssyk-kol5.jpg';
+import SaryChelek from '../../assets/image/sary-chelek2.jpg'
+import { Card, Col, Container, Row } from "react-bootstrap";
+import "./TwoCities.css";
+
+const TwoCities = () => {
+  return (
+    <div>
+      <Container className="imgTwoCityes">
+        <Row>
+          <Card.Text className="textTheme">
+            <b> Listings of any kind </b>
+          </Card.Text>
+          <Col>
+            <Card className="twoimg">
+              <Card.Img
+                variant="top"
+                src={SaryChelek}
+              />
+              <Card.Title className='two-cities-title'>A weekend getaway to the <br /> Sary-Chelek Lake?</Card.Title>
+            </Card>
+          </Col>
+          <Col>
+            <Card className="twoimg">
+              <Card.Img
+                variant="top"
+                src={YssykKol}
+              />
+              <Card.Title className='two-cities-title'>Or a two-week trip to visit  Yssyk-Kul,<br /> Kyrgyzstan?</Card.Title>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+};
+
+export default TwoCities;

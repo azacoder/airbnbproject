@@ -1,21 +1,45 @@
 .myCards {
-    width: 1349px;
-    margin: auto;
-    padding-left: 55px;
-    padding: auto;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: start;
-
+  /* width: 1349px; */
+  max-width: 1150px;
+  margin: auto;
+  /* padding-left: 55px; */
+  /* padding: auto; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
-.card {
-    width: 300px;
-    height: 400px;
-    margin-left: 10px;
-    margin-top: 20px;
+.card-title-listing {
+  color: black;
+  font-size: 16px;
 }
-
-.img-card {
-    width: 298px;
-    height: 200px;
+.card-header-adress {
+  color: black;
+  font-size: 15px;
+}
+.card-footer {
+  color: grey;
+  font-size: 15px;
+  margin-top: 15px;
+}
+.card-apart {
+  width: 16rem;
+  height: 20rem;
+}
+.price {
+  color: #1d226c;
+}
+.link {
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+.guest_icon {
+  width: 17px;
+  height: 17px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 80px;
+}
+.card-img-listing {
+  width: 15,4rem;
+  height: 10rem;
 }
