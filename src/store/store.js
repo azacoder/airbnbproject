@@ -1,13 +1,13 @@
-
-import {createStore} from "redux"
+import { createStore } from "redux";
 import { reducer } from "./reducer/reducer";
-export const defaultState = { 
-  
-  userData: null, 
-  userToken: null, 
-  userHouse: [],
 
-}; 
+export const defaultState = {
+  userData: null,
+  userToken: null,
+  cityData: [],
+  userHouse: [],
+};
+
 
 const store = createStore(reducer);
-export default store
+export default store;

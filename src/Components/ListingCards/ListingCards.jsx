@@ -7,13 +7,11 @@ import Fetch from "../../api/request";
 
 export const ListingCards = () => {
   const [homeListings, setHomeListings] = useState([]);
-  const linkServer =
-    "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
-    
-   Fetch("listing/all", { method: "GET" }).then((response) => {
+  const linkServer = "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/"; 
+  useEffect(() => {
+    Fetch("listing/all", { method: "GET" }).then((response) => {
     setHomeListings(response)
-  });
-
+  }); []);
   return (
     <div className="myCards">
       {homeListings.map((el) => {
