@@ -5,6 +5,7 @@ import {
   Form,
   Button,
   ButtonGroup,
+  Spinner,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Fetch from "../../api/request";
@@ -16,10 +17,8 @@ export const SubmitAds = () => {
   const [isLoaded, setIsLoaded] = useState(true);
   const [img, setImg] = useState("");
   const [cityes, setCityes] = useState(" ");
-  // const [showToast, setShowToast] = useState(false);
   const [successAd, setSuccesAd] = useState(false);
 
-  /* ************** */
   const [formValues, setFormValues] = useState({
     type: "",
     numOfGuests: "",
@@ -31,8 +30,6 @@ export const SubmitAds = () => {
     price: "",
   });
 
-  /* ************************* */
-
   const [blurStatus, setBlurStatus] = useState({
     type: false,
     numOfGuests: false,
@@ -43,38 +40,41 @@ export const SubmitAds = () => {
     imageId: false,
     price: false,
   });
-  /* ************************* */
+
   const btnStyle =
     formValues.type !== "" &&
-    formValues.numOfGuests !== "" &&
-    formValues.title !== "" &&
-    formValues.description !== "" &&
-    formValues.address !== "" &&
-    formValues.cityId !== "" &&
-    img !== "" &&
-    formValues.price !== ""
+      formValues.numOfGuests !== "" &&
+      formValues.title !== "" &&
+      formValues.description !== "" &&
+      formValues.address !== "" &&
+      formValues.cityId !== "" &&
+      img !== "" &&
+      formValues.price !== ""
       ? "btn active btn-primary btn-mg"
       : "btn disabled btn-secondary btn-mg ";
-  /* ************************* */
 
   const messageType =
     formValues.numOfGuests !== "" && !blurStatus.type
       ? "Choose the type of House"
       : " ";
+
   const messageNumOfGuests =
     formValues.numOfGuests === 0 ||
-    (formValues.numOfGuests === "" && blurStatus.numOfGuests)
+      (formValues.numOfGuests === "" && blurStatus.numOfGuests)
       ? "Enter the number of guests"
       : " ";
 
   const messageTitle =
     formValues.title === "" && blurStatus.title ? "Enter title" : " ";
+
   const messageDescpiton =
     formValues.description === "" && blurStatus.description
       ? "Enter description"
       : " ";
+
   const messageAddress =
     formValues.address === "" && blurStatus.address ? "Enter the address" : " ";
+
   const messsagePrice =
     formValues.price === 0 || (formValues.price === "" && blurStatus.price)
       ? "Enter the price"
@@ -82,9 +82,10 @@ export const SubmitAds = () => {
 
   const messageCityes =
     img !== "" && !blurStatus.cityId ? "Choose the city" : " ";
+
   const messageImage =
     formValues.price !== "" && !blurStatus.imageId ? "Choose the image" : " ";
-  /* ************************ */
+
   const chancherBlurStatus = (e) => {
     setBlurStatus({
       ...blurStatus,
@@ -92,9 +93,6 @@ export const SubmitAds = () => {
     });
   };
 
-  /* ********************** */
-
-  /* ********************* */
   const handleChange = (e) => {
     const value = e.target.value;
     setFormValues({
@@ -124,6 +122,7 @@ export const SubmitAds = () => {
       [e.target.name]: true,
     });
   };
+
   const apartFunc = (e) => {
     setStatusApart(true);
     setStatusHouse(false);
@@ -132,21 +131,20 @@ export const SubmitAds = () => {
       ...formValues,
       [e.target.name]: btnValue,
     });
+
     setBlurStatus({
       ...blurStatus,
       [e.target.name]: true,
     });
   };
-  /* *************************** */
+
   const btnVarHouse = statusHouse === true ? "primary" : "outline-primary";
   const btnVarApart = statusApart === true ? "primary" : "outline-primary";
 
-  /* *******************  */
   const imgFunc = (e) => {
     setImg(e.target.files[0]);
   };
 
-  /* *************************************** */
   useEffect(() => {
     fetch(
       "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/cities/all",
@@ -169,7 +167,6 @@ export const SubmitAds = () => {
         setIsLoaded(false);
       });
   }, []);
-  /*  **************************************************** */
 
   function uploadFile() {
     var formData = new FormData();
@@ -203,17 +200,17 @@ export const SubmitAds = () => {
         body: dataToSave,
       });
       setSuccesAd(true);
-    } catch (error) {}
+    } catch (error) { }
   }
 
-  /* ************Отправка формы на сервер****************** */
   if (successAd) {
     return <Redirect to="/successfullpage" />;
   }
+
   return (
     <>
       {isLoaded ? (
-        <p>Loading....</p>
+        <Spinner className='spinner' animation="border" />
       ) : (
         <Container className="Submit--Ads">
           <Form>
@@ -241,7 +238,7 @@ export const SubmitAds = () => {
                 <span>*</span> Max # of Guests
               </Form.Label>
               <Form.Control
-                style={{ width: "100px" }}
+                className='quest-input'
                 type="number"
                 placeholder="4"
                 onChange={handleChangeNumber}
@@ -255,9 +252,9 @@ export const SubmitAds = () => {
                 <span>*</span> Title
               </Form.Label>
               <Form.Control
-                style={{ width: "500px" }}
+                className='quest-title'
                 type="text"
-                placeholder="The iconic and luxurious Bel-Air mansion"
+                placeholder="The iconic and luxurious Ala-Archa mansion."
                 onChange={handleChange}
                 name="title"
                 onBlur={chancherBlurStatus}
@@ -271,10 +268,10 @@ export const SubmitAds = () => {
               <Form.Control
                 as="textarea"
                 placeholder="
-              Modern, clean, and iconic home of the Fresh Prince.
-              Situated in the heart of Bel-Air, Los Angeles.
+                Modern, clean and iconic Garden Hotel.
+                Located in the center of Bishkek, Kyrgyzstan.
             "
-                style={{ height: "100px", width: "500px" }}
+                className='quest-description'
                 onChange={handleChange}
                 name="description"
                 onBlur={chancherBlurStatus}
@@ -287,7 +284,7 @@ export const SubmitAds = () => {
                 <span>*</span> Address
               </Form.Label>
               <Form.Control
-                style={{ width: "500px" }}
+                className='address'
                 type="text"
                 placeholder="Address"
                 onChange={handleChange}
@@ -302,7 +299,7 @@ export const SubmitAds = () => {
               </Form.Label>
               <Form.Control
                 as="select"
-                style={{ width: "500px" }}
+                className='town'
                 defaultValue="Choose..."
                 onChange={handleChange}
                 name="cityId"

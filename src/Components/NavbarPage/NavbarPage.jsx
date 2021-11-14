@@ -60,41 +60,43 @@ export const NavbarPage = () => {
   
 
   return (
-    <>
+    <div className="main-navbar">
       <Navbar className="Nav" fixed="top" expand="lg">
         <Navbar.Brand>
           <NavLink to = "/">
-          <Image className="imgH" src={home} thumbnail />
+          <Image className="imgHome" src={home} thumbnail />
           </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          {/* <Form className="searchH">
+
+          <Form className="searchHeader">
             <FormControl
               type="search"
-              placeholder="Search 'San Fransisco'"
+              placeholder="Search 'Kyrgyzstan'"
               className="mr-2"
               aria-label="Search"
             />
             <Button>
-              <Image className="searchI" src={search1} />
+              <Image className="searchIcon" src={search1} />
             </Button>
-          </Form> */}
+          </Form>
+          
         </Navbar.Collapse>
         <Nav>
           <NavLink className="host" to ="/submitads">
-            <Image className="hostI" src={host} />
+            <Image className="hostIcon" src={host} />
             Host
           </NavLink>
           {UserFromStore !== null ? (
             <Profile />
           ) : (
-            <Button className="signin" value="primary" onClick={BtnSignIn}>
+            <Button className="signIn" value="primary" onClick={BtnSignIn}>
               Sign in
             </Button>
           )}
         </Nav>
       </Navbar>
-    </>
+    </div>
   );
 };

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import guestIcon from "../../assets/image/guest_icon.svg";
 import { useSelector } from "react-redux";
 
-
 export const Search = () => {
+  const stateCard = useSelector((state) => state.userHouse);
+
   const linkServer =
     "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
-  const stateCard = useSelector((state) => state.userHouse);
   return (
     <div className="myCards">
       {stateCard.map((el) => {
@@ -36,7 +36,7 @@ export const Search = () => {
                           src={guestIcon}
                           alt="guest_icon"
                         />
-                        for {el.numOfGuests} guests
+                        {el.numOfGuests} guests
                       </Card.Footer>
                     </Card.Body>
                   </Card>
