@@ -8,11 +8,9 @@ export const Cities = () => {
   const CityesFromStore = useSelector(state => state.cityData)
   console.log('CityesFromStore', CityesFromStore); 
   const linkServer = 'http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/';
-    // "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/"; 
   return ( 
     <div className="myCards"> 
-      {CityesFromStore.map((el) => {
-        return ( 
+      {CityesFromStore.map((el) => ( 
           <Link to={`/product/${el.id}`} className="link"> 
             <Container> 
               <Row> 
@@ -45,8 +43,8 @@ export const Cities = () => {
               </Row> 
             </Container> 
           </Link> 
-        ); 
-      })} 
+        )
+      )} 
     </div> 
   ); 
 };

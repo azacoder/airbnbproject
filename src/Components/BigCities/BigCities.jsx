@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./BigCities.css";
 import { Redirect } from "react-router";
-import { Form, FormControl, Button, Image } from "react-bootstrap";
+import { Form, FormControl, Button, Image, Spinner } from "react-bootstrap";
 import Fetch from "../../api/request";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -132,7 +132,7 @@ const BigCities = () => {
   return (
     <>
       {isLoaded ? (
-        <p>Loading....</p>
+        <Spinner animation="border" />
       ) : (
         <div className="main-div">
           <div className="div1">
@@ -140,7 +140,7 @@ const BigCities = () => {
             <Form className="containerSearch">
               <FormControl
                 type="search"
-                placeholder="Search 'San Fransisco'"
+                placeholder="Search 'Kyrgyzstan'"
                 className="mr-2"
                 aria-label="Search"
                 onChange={handleChangeInput}

@@ -5,13 +5,14 @@ import { useState } from "react";
 import { MyVerticallyCenteredModal } from "./modal-for-prof/profileModal";
 import { useSelector } from "react-redux";
 
-const ProfileUser = (props) => {
+const ProfileUser = () => {
   const dataUsers = useSelector((state) => state.userData);
   const [modalShow, setModalShow] = useState(false);
+
   return (
     <>
       <Card className="card-profile">
-        <Image  className="image-profile" src={dataUsers.avatar}/>
+        <Image className="image-profile" src={dataUsers.avatar} />
         <Card.Body className="bo">
           <Card.Title className="theme">Details</Card.Title>
           <Card.Text>
@@ -24,7 +25,7 @@ const ProfileUser = (props) => {
           </Card.Text>
           <hr />
           <Card.Title className="theme">Additional Details</Card.Title>
-          <Card.Text className="ltt">
+          <Card.Text className="text-profile">
             If you want to place an ad that you are renting an apartment or room
             for daily rent, you will have to pay for it.
           </Card.Text>
@@ -35,7 +36,7 @@ const ProfileUser = (props) => {
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
-          <Card.Text className="lt">
+          <Card.Text className="last-text-profile">
             TinyHouse uses{" "}
             <a className="a-profile" href="https://stripe.com/connect">
               Stripe

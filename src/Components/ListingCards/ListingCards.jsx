@@ -17,9 +17,9 @@ export const ListingCards = () => {
   }, []);
   return (
     <div className="myCards">
-      {homeListings.map((el) => {
-        return <HouseCart data={el} key={el.id} linkServer={linkServer} />;
-      })}
+      {homeListings.map((el) => (
+        <HouseCart data={el} key={el.id} linkServer={linkServer} />
+      ))}
     </div>
   );
 };
@@ -37,12 +37,11 @@ const HouseCart = ({ data, linkServer }) => {
                 className="card-img-listing"
               />
               <Card.Body>
-                <span className="price">${data.price}/day</span>
-                <b>
-                  <Card.Title class="card-title-listing">
-                    {data.title}
-                  </Card.Title>
-                </b>
+                <span className="price">${data.price}<span className="day-price">/day</span></span>
+                <br />
+                <strong class="card-title-listing">
+                  {data.title}
+                </strong>
                 <p className="card-header-adress">{data.address}</p>
                 <Card.Footer className="card-footer">
                   <img
@@ -50,7 +49,7 @@ const HouseCart = ({ data, linkServer }) => {
                     src={guestIcon}
                     alt="guest_icon"
                   />
-                  for {data.numOfGuests} guests
+                  {data.numOfGuests} guests
                 </Card.Footer>
               </Card.Body>
             </Card>

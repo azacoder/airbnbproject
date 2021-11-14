@@ -1,21 +1,29 @@
-.Nav {
-  height: "70px";
-  box-shadow: "10px";
-  background-color: white;
+.main-navbar {
+  width: auto;
+  margin-bottom: 110px;
 }
 
-.imgH {
+.Nav {
+  max-width: 1349px;
+  margin: auto;
+  height: auto;
+  background-color: white;
+  color: gainsboro;
+  box-shadow: rgba(34, 33, 33, 0.137) 0px 3px 8px;
+}
+
+.imgHome {
   margin: 0px 10px;
   width: 44px;
 }
 
-.searchH {
+.searchHeader {
   width: 480px;
   height: 30px;
   display: flex;
 }
 
-.searchI {
+.searchIcon {
   width: 50px;
   height: 18px;
   margin-bottom: 10px;
@@ -29,19 +37,13 @@
   color: black;
 }
 
-.hostI {
+.hostIcon {
   margin: 0px 12px;
   margin-bottom: 4px;
   width: 17px;
 }
 
-.btnsignin {
-  margin: 15px;
-  margin-right: 30px;
-  border: none;
-}
-
-.signin{
+.signIn {
   margin: 10px;
   margin-right: 40px;
 }
