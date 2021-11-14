@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./NavbarPage.css";
 import search1 from "./../../assets/image/search3.svg";
@@ -10,8 +10,9 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import Profile from "../Profile/Profile";
 import { useSelector } from "react-redux";
-import { userAction, tokenAction, houseAction } from "../../store/action/action";
+import { tokenAction, userAction } from "../../store/action/action";
 import { NavLink } from "react-router-dom";
+// import { Home } from '../../Containers/Home/Home'
 
 initializeApp(config);
 
@@ -19,6 +20,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
 export const NavbarPage = () => {
+  // const [searchView, setSearchView] = useState(false);
   const dispatch = useDispatch();
   const UserFromStore = useSelector((state) => state.userData);
 
@@ -69,17 +71,21 @@ export const NavbarPage = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          {/* <Form className="searchH">
-            <FormControl
-              type="search"
-              placeholder="Search 'San Fransisco'"
-              className="mr-2"
-              aria-label="Search"
-            />
-            <Button>
-              <Image className="searchI" src={search1} />
-            </Button>
-          </Form> */}
+        {/* {searchView == false ? (
+            <Home/>
+          ) : (
+            <Form className="searchH">
+              <FormControl
+                type="search"
+                placeholder="Search 'San Fransisco'"
+                className="mr-2"
+                aria-label="Search"
+              />
+              <Button>
+                <Image className="searchI" src={search1} />
+              </Button>
+            </Form>
+          )} */}
         </Navbar.Collapse>
         <Nav>
           <NavLink className="host" to ="/submitads">
