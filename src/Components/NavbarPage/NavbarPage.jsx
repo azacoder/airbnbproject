@@ -62,11 +62,11 @@ export const NavbarPage = () => {
   
 
   return (
-    <>
+    <div className="main-navbar">
       <Navbar className="Nav" fixed="top" expand="lg">
         <Navbar.Brand>
           <NavLink to = "/">
-          <Image className="imgH" src={home} thumbnail />
+          <Image className="imgHome" src={home} thumbnail />
           </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -89,18 +89,18 @@ export const NavbarPage = () => {
         </Navbar.Collapse>
         <Nav>
           <NavLink className="host" to ="/submitads">
-            <Image className="hostI" src={host} />
+            <Image className="hostIcon" src={host} />
             Host
           </NavLink>
           {UserFromStore !== null ? (
             <Profile />
           ) : (
-            <Button className="signin" value="primary" onClick={BtnSignIn}>
+            <Button className="signIn" value="primary" onClick={BtnSignIn}>
               Sign in
             </Button>
           )}
         </Nav>
       </Navbar>
-    </>
+    </div>
   );
 };
