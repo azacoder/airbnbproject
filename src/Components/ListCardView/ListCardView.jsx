@@ -54,7 +54,7 @@ export const ListCardView = () => {
   console.log(endDateForServer);
 
   /* **************************************** */
-
+  git branch bugfix/resolve-conflicts-in-listcardview
   const postBooking = () => {
     Fetch(`listing/${CardFilter[0].id}/book`, {
       method: "POST",
@@ -134,6 +134,7 @@ export const ListCardView = () => {
           price={el.price}
           show={modalShow}
           onHide={() => setModalShow(false)}
+          postBooking={postBooking}
         />
       </div>
     </div>
