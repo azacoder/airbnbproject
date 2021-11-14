@@ -2,6 +2,10 @@ import { Modal, Button } from "react-bootstrap";
 import "./ModalBooking.css";
 
 export function ModalBooking(props) {
+  const btnModal = () => {
+    props.postBooking();
+    props.onHide();
+  };
   return (
     <Modal
       {...props}
@@ -23,7 +27,7 @@ export function ModalBooking(props) {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Book</Button>
+        <Button onClick={btnModal}>Book</Button>
       </Modal.Footer>
     </Modal>
   );

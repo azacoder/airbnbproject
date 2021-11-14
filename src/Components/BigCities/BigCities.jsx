@@ -17,6 +17,41 @@ import Chuy from "../../assets/image/chuy.jpg";
 import Batken from "../../assets/image/aigul1.jpg";
 import Naryn from "../../assets/image/naryn2.jpg";
 
+const imgMass = [
+  {
+    id: 0,
+    img: Bishkek,
+  },
+  {
+    id: 1,
+    img: JalalAbad,
+  },
+  {
+    id: 2,
+    img: Talas,
+  },
+  {
+    id: 3,
+    img: YssykKul,
+  },
+  {
+    id: 5,
+    img: Chuy,
+  },
+  {
+    id: 4,
+    img: Osh,
+  },
+  {
+    id: 6,
+    img: Batken,
+  },
+  {
+    id: 7,
+    img: Naryn,
+  },
+];
+
 const BigCities = () => {
   const [inputValue, setInputValue] = useState("");
   const [uploadSearch, setUploadSearch] = useState(false);
@@ -26,41 +61,6 @@ const BigCities = () => {
   const [cityes, setCityes] = useState("");
   const [idCityes, setIdCityes] = useState("");
   const [successUploadCityes, setSuccessUploadCityes] = useState(false);
-
-  const imgMass = [
-    {
-      id: 0,
-      img: Bishkek,
-    },
-    {
-      id: 1,
-      img: JalalAbad,
-    },
-    {
-      id: 2,
-      img: Talas,
-    },
-    {
-      id: 3,
-      img: YssykKul,
-    },
-    {
-      id: 5,
-      img: Chuy,
-    },
-    {
-      id: 4,
-      img: Osh,
-    },
-    {
-      id: 6,
-      img: Batken,
-    },
-    {
-      id: 7,
-      img: Naryn,
-    },
-  ];
 
   useEffect(() => {
     fetch(
@@ -85,11 +85,6 @@ const BigCities = () => {
       });
   }, []);
 
-  const handleChangeInput = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-  };
-
   const getSearch = () => {
     Fetch(`listing/search?value=${inputValue}`, { method: "GET" }).then(
       (response) => {
@@ -98,6 +93,11 @@ const BigCities = () => {
         setUploadSearch(true);
       }
     );
+  };
+
+  const handleChangeInput = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
   };
 
   if (uploadSearch) {

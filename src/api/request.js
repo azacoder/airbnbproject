@@ -1,9 +1,7 @@
-import store from "../store/store"
-
 const DEFAULT_URL = 'http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api'
 
  const Fetch = async (path, options) => {
-    const token = store.getState().userToken
+    const token = localStorage.getItem("IdTokenGoogle")
     const requestOptions = {
         method: options.method || 'GET',
         headers: {
