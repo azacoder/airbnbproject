@@ -45,14 +45,12 @@ export const ListCardView = () => {
   const endDateFromState = endDate === null ? new Date() : endDate;
   console.log(endDateFromState);
 
-  const startDateForServer = `${startDateFromState.getDate()}/${
-    startDateFromState.getMonth() + 1
-  }/${startDateFromState.getFullYear()}`;
+  const startDateForServer = `${startDateFromState.getDate()}/${startDateFromState.getMonth() + 1
+    }/${startDateFromState.getFullYear()}`;
   console.log(startDateForServer);
 
-  const endDateForServer = `${endDateFromState.getDate()}/${
-    endDateFromState.getMonth() + 1
-  }/${endDateFromState.getFullYear()}`;
+  const endDateForServer = `${endDateFromState.getDate()}/${endDateFromState.getMonth() + 1
+    }/${endDateFromState.getFullYear()}`;
   console.log(endDateForServer);
 
   /* **************************************** */
@@ -63,7 +61,7 @@ export const ListCardView = () => {
       body: { checkIn: startDate, checkOut: endDate },
     });
   };
-
+  console.log(CardFilter);
   /* ********************************* */
   return CardFilter.map((el) => {
     return (
@@ -84,7 +82,11 @@ export const ListCardView = () => {
             </div>
             <p className="p-p-p">{el.title}</p>
             <hr />
-            <p>User Name</p>
+            <div>
+              <img className="userAvatar" src={el.host.avatar} alt="userAvatar" />
+              <span className="userName">{el.host.firstName}</span>
+              <span className="userName">{el.host.lastName}</span>
+            </div>
             <hr />
             <p className="p-p">About this space</p>
             <div>

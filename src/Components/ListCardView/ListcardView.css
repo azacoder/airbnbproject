@@ -59,9 +59,8 @@ hr {
 }
 .img-div-card {
   margin-bottom: 30px;
- 
 }
-.imgAd{
+.imgAd {
   width: 500px;
   height: 350px;
 }
@@ -83,4 +82,18 @@ hr {
 }
 span.cityname {
   color: #0d6efd;
+}
+.userAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+.userName {
+  margin-left: 15px;
+  font-family: "Sacramento", cursive;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.35;
 }
