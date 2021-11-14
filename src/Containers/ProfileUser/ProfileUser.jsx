@@ -5,13 +5,13 @@ import { useState } from "react";
 import { MyVerticallyCenteredModal } from "./modal-for-prof/profileModal";
 import { useSelector } from "react-redux";
 
-const ProfileUser = (props) => {
+const ProfileUser = () => {
   const dataUsers = useSelector((state) => state.userData);
   const [modalShow, setModalShow] = useState(false);
   return (
     <>
       <Card className="card-profile">
-        <Image  className="image-profile" src={dataUsers.avatar}/>
+        <Image className="image-profile" src={dataUsers.avatar} />
         <Card.Body className="bo">
           <Card.Title className="theme">Details</Card.Title>
           <Card.Text>

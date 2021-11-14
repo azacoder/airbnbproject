@@ -18,12 +18,12 @@ export const MyVerticallyCenteredModal = (props) => {
       </Modal.Header>
       <Modal.Body>
         <div className="div-card-icon">
-        <input
-          type="text"
-          placeholder="Номер карты                                                                                                  ММ/ГГ CVC"
-          className="input-pay-card"
-        ></input>
-        <img src={Pay}/>
+          <input
+            type="text"
+            placeholder="Номер карты                                                                                                  ММ/ГГ CVC"
+            className="input-pay-card"
+          />
+          <img src={Pay} alt="payment" />
         </div>
       </Modal.Body>
       <Modal.Footer>
