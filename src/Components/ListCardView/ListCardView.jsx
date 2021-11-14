@@ -1,6 +1,6 @@
 import "./ListcardView.css";
 import DatePicker from "react-datepicker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { ModalBooking } from "./ModalBooking/ModalBooking";
@@ -28,16 +28,43 @@ export const ListCardView = () => {
   };
 
   const linkServer =
-    "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
+    " http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
 
- Fetch("listing/all", { method: "GET" }).then((response) => {
-    setHomeListings(response)
-  });
+  useEffect(() => {
+    Fetch("listing/all", { method: "GET" }).then((response) => {
+      setHomeListings(response);
+    });
+  }, []);
 
   let CardFilter = homeListings.filter((el) => {
     return el.id == id;
   });
-  console.log(CardFilter);
+  /* ***************Booking code**************** */
+  const startDateFromState = startDate === null ? new Date() : startDate;
+  console.log(startDateFromState);
+  const endDateFromState = endDate === null ? new Date() : endDate;
+  console.log(endDateFromState);
+
+  const startDateForServer = `${startDateFromState.getDate()}/${
+    startDateFromState.getMonth() + 1
+  }/${startDateFromState.getFullYear()}`;
+  console.log(startDateForServer);
+
+  const endDateForServer = `${endDateFromState.getDate()}/${
+    endDateFromState.getMonth() + 1
+  }/${endDateFromState.getFullYear()}`;
+  console.log(endDateForServer);
+
+  /* **************************************** */
+
+  const postBooking = () => {
+    Fetch(`listing/${CardFilter[0].id}/book`, {
+      method: "POST",
+      body: { checkIn: startDate, checkOut: endDate },
+    });
+  };
+
+  /* ********************************* */
   return CardFilter.map((el) => {
     return (
       <div className="title">
@@ -108,6 +135,7 @@ export const ListCardView = () => {
             price={el.price}
             show={modalShow}
             onHide={() => setModalShow(false)}
+            postBooking={postBooking}
           />
         </div>
       </div>
