@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import "./App.css";
 import { Home } from "./Containers/Home/Home";
 import { useSelector } from "react-redux";
 import { userAction, tokenAction } from "./store/action/action";

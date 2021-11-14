@@ -15,11 +15,17 @@ export const ListingCards = () => {
       setHomeListings(response);
     });
   }, []);
+  /* ********************************* */
+  const sliceListings = homeListings.slice(Math.max(homeListings.length - 8, 0))
+  console.log(sliceListings);
+  /* ********************************** */
+
   return (
     <div className="myCards">
-      {homeListings.map((el) => (
-        <HouseCart data={el} key={el.id} linkServer={linkServer} />
-      ))}
+
+      {sliceListings.map((el) => {
+        return <HouseCart data={el} key={el.id} linkServer={linkServer} />;
+      })}
     </div>
   );
 };
