@@ -3,18 +3,18 @@ import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router";
 import { Form, FormControl, Button, Image, Spinner } from "react-bootstrap";
 import Fetch from "../../api/request";
-import { useDispatch } from "react-redux";
 import { houseAction, cityesAction } from "../../store/action/action";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import search1 from "../../assets/image/search3.svg";
-
-import Bishkek from "../../assets/image/bishkek.jpg";
-import JalalAbad from "../../assets/image/jalal-abad.jpg";
+import Bishkek from "../../assets/image/Bi.jpg";
+import JalalAbad from "../../assets/image/jal.jpg";
 import Talas from "../../assets/image/talas.jpg";
-import YssykKul from "../../assets/image/yssykkol.jpg";
-import Osh from "../../assets/image/osh1.jpg";
-import Chuy from "../../assets/image/chuy.jpg";
-import Batken from "../../assets/image/aigul1.jpg";
-import Naryn from "../../assets/image/naryn2.jpg";
+import YssykKul from "../../assets/image/kol.jpg";
+import Osh from "../../assets/image/osh.jpg";
+import Chuy from "../../assets/image/bu.jpg";
+import Batken from "../../assets/image/aigul.jpg";
+import Naryn from "../../assets/image/naryn.jpg";
 
 const imgMass = [
   {

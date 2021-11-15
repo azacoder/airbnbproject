@@ -42,6 +42,14 @@ h1 {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.box{
+  opacity: 0.8;
+  transition: opacity 1s;
+}
+.box:hover{
+  opacity: 1;
+  transition: opacity 1s;
+}
 .imgText {
   font-family: "Times New Roman", Times, serif;
   margin-top: -35px;
