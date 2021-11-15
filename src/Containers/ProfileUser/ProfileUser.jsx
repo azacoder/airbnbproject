@@ -1,13 +1,16 @@
 import "./ProfileUser.css";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Card, Image } from "react-bootstrap";
 import Fetch from "../../api/request";
 import { HouseCart } from "../../Components/HouseCard/HouseCard";
+import { Redirect } from "react-router";
 
 const ProfileUser = () => {
+  const userFromStore = useSelector(state => state.userData);
+
   const [usersHouse, setUsersHouse] = useState({});
   const [isLoading, setLoading] = useState(true);
-
 
   useEffect(() => {
     Fetch("user/profile?listings=true", { method: "GET" }).then((responses) => {
@@ -17,6 +20,10 @@ const ProfileUser = () => {
     });
   }, []);
 
+
+  if (!userFromStore) {
+    return <Redirect to="/" />
+  }
   return (
     <>
       {isLoading ? (
