@@ -3,7 +3,7 @@
   padding-bottom: 2rem;
   width: 72rem;
 } */
-.img-two-cityes{
+.img-two-cityes {
   max-width: 1150px;
   margin: auto;
 }
@@ -13,6 +13,9 @@
 }
 .two-img {
   width: 34.1rem;
+  transform: scale(1.01);
+  color: gainsboro;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .two-cities {

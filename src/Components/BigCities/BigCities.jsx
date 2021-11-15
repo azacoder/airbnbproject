@@ -8,7 +8,7 @@ import { houseAction, cityesAction } from "../../store/action/action";
 import search1 from "../../assets/image/search3.svg";
 
 import Bishkek from "../../assets/image/bishkek.jpg";
-import JalalAbad from "../../assets/image/jalal-abad.jpg";
+import JalalAbad from "../../assets/image/sary.jpg";
 import Talas from "../../assets/image/talas.jpg";
 import YssykKul from "../../assets/image/yssykkol.jpg";
 import Osh from "../../assets/image/osh1.jpg";
@@ -46,7 +46,7 @@ const imgMass = [
 const BigCities = () => {
   const dispatch = useDispatch();
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputSearch, setinputSearch] = useState("");
   const [uploadSearch, setUploadSearch] = useState(false);
   const [cityes, setCityes] = useState("");
   const [successUploadCityes, setSuccessUploadCityes] = useState(false);
@@ -61,7 +61,7 @@ const BigCities = () => {
   }, []);
 
   const getSearch = () => {
-    Fetch(`listing/search?value=${inputValue}`, { method: "GET" }).then(
+    Fetch(`listing/search?value=${inputSearch}`, { method: "GET" }).then(
       (response) => {
         console.log(response);
         dispatch(houseAction(response));
@@ -86,9 +86,9 @@ const BigCities = () => {
 
 
 
-  const handleChangeInput = (e) => {
+  const handleChangeSearch = (e) => {
     const value = e.target.value;
-    setInputValue(value);
+    setinputSearch(value);
   };
 
 
@@ -117,10 +117,10 @@ const BigCities = () => {
             <Form className="containerSearch">
               <FormControl
                 type="search"
-                placeholder="Search 'Kyrgyzstan'"
+                placeholder="Search in 'Kyrgyzstan'"
                 className="mr-2"
                 aria-label="Search"
-                onChange={handleChangeInput}
+                onChange={handleChangeSearch}
               />
               <Button onClick={getSearch}>
                 <Image className="imgSearch" src={search1} />

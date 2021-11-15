@@ -1,6 +1,7 @@
 import "./SubmitAds.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   Container,
   Form,
@@ -12,6 +13,8 @@ import Fetch from "../../api/request";
 import { Redirect } from "react-router";
 
 export const SubmitAds = () => {
+  const userFromStore = useSelector(state => state.userData);
+
   const [statusHouse, setStatusHouse] = useState(false);
   const [statusApart, setStatusApart] = useState(false);
   const [isLoaded, setIsLoaded] = useState(true);
@@ -191,6 +194,10 @@ export const SubmitAds = () => {
 
   if (successAd) {
     return <Redirect to="/successfullpage" />;
+  }
+
+  if (!userFromStore) {
+    return <Redirect to="/" />
   }
 
   return (
