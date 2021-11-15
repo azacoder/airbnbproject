@@ -28,7 +28,6 @@ export const ListCardView = () => {
     });
   }, []);
 
-
   const postBooking = () => {
     Fetch(`listing/${CardFilter[0].id}/book`, {
       method: "POST",
