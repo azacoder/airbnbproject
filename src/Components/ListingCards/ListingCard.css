@@ -1,53 +1,7 @@
-.myCards {
+.listings-box {
   max-width: 1150px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-.card-title-listing {
-  color: black;
-  font-size: 13px;
-  font-weight: 600;
-}
-.card-header-adress {
-  color: black;
-  font-size: 15px;
-}
-.card-footer {
-  color: grey;
-  font-size: 15px;
-  margin-top: 15px;
-}
-.card-apart {
-  width: 16rem;
-  height: 20rem;
-}
-.card-apart:hover {
-  transform: scale(1.01);
-  color: gainsboro;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.price {
-  color: #1d226c;
-}
-.link {
-  text-decoration: none;
-  margin-bottom: 30px;
-}
-.guest_icon {
-  width: 17px;
-  height: 17px;
-  margin-bottom: 5px;
-  margin-right: 5px;
-  margin-left: 80px;
-}
-.card-img-listing {
-  width: 15,4rem;
-  height: 10rem;
-}
-.day-price {
-  color: rgba(128, 128, 128, 0.568);
-  font-size: 20px;
-
 }

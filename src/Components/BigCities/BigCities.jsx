@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
 import "./BigCities.css";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router";
 import { Form, FormControl, Button, Image, Spinner } from "react-bootstrap";
 import Fetch from "../../api/request";
+import { houseAction, cityesAction } from "../../store/action/action";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { houseAction } from "../../store/action/action";
-import { cityesAction } from "../../store/action/action";
-
 import search1 from "../../assets/image/search3.svg";
 import Bishkek from "../../assets/image/Bi.jpg";
 import JalalAbad from "../../assets/image/jal.jpg";
@@ -20,70 +18,46 @@ import Naryn from "../../assets/image/naryn.jpg";
 
 const imgMass = [
   {
-    id: 0,
-    img: Bishkek,
+    img: Bishkek
   },
   {
-    id: 1,
-    img: JalalAbad,
+    img: JalalAbad
   },
   {
-    id: 2,
-    img: Talas,
+    img: Talas
   },
   {
-    id: 3,
-    img: YssykKul,
+    img: YssykKul
   },
   {
-    id: 5,
-    img: Chuy,
+    img: Chuy
   },
   {
-    id: 4,
-    img: Osh,
+    img: Osh
   },
   {
-    id: 6,
-    img: Batken,
+    img: Batken
   },
   {
-    id: 7,
     img: Naryn,
   },
 ];
 
 const BigCities = () => {
+  const dispatch = useDispatch();
+
   const [inputValue, setInputValue] = useState("");
   const [uploadSearch, setUploadSearch] = useState(false);
-  const cityesFromStore = useSelector((state) => state.cityData);
-  const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(true);
   const [cityes, setCityes] = useState("");
-  const [idCityes, setIdCityes] = useState("");
   const [successUploadCityes, setSuccessUploadCityes] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
+
 
   useEffect(() => {
-    fetch(
-      "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/cities/all",
-      {
-        method: "GET",
-      }
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("token is not correct");
-        }
-        return res.json();
-      })
-      .then((result) => {
-        setCityes(result.data);
-        setIsLoaded(false);
-      })
-      .catch((error) => {
-        localStorage.removeItem("IdTokenGoogle");
-        setIsLoaded(false);
-      });
+    Fetch("cities/all", { method: "GET" }).then((result) => {
+      setCityes(result);
+      setIsLoaded(false);
+    })
   }, []);
 
   const getSearch = () => {
@@ -95,41 +69,43 @@ const BigCities = () => {
       }
     );
   };
+  const getHouses = (city) => {
+    Fetch(`listing/all?cityId=${city}`, {
+      method: "GET",
+    }).then((response) => {
+      console.log(response);
+      dispatch(cityesAction(response));
+      setSuccessUploadCityes(true);
+    });
+  };
+
+  const getCityId = (e) => {
+    let city = e.target.id;
+    getHouses(city);
+  };
+
+
 
   const handleChangeInput = (e) => {
     const value = e.target.value;
     setInputValue(value);
   };
 
-  if (uploadSearch) {
-    return <Redirect to="/search" />;
-  }
 
-  const array3 = imgMass.map((item, index) => ({
+  const concatArray = imgMass.map((item, index) => ({
     ...item,
     ...cityes[index],
   }));
 
-  const getCityId = (e) => {
-    let city = e.target.id;
 
-    const getHouses = () => {
-      Fetch(`listing/all?cityId=${city}`, {
-        method: "GET",
-      }).then((response) => {
-        console.log(response);
-        dispatch(cityesAction(response));
-        setSuccessUploadCityes(true);
-      });
-    };
-    getHouses(city);
-  };
-  console.log(idCityes);
 
-  console.log(cityesFromStore);
   if (successUploadCityes) {
     return <Redirect to="/cityes" />;
   }
+  else if (uploadSearch) {
+    return <Redirect to="/search" />;
+  }
+
   return (
     <>
       {isLoaded ? (
@@ -151,7 +127,7 @@ const BigCities = () => {
               </Button>
             </Form>
             <div className="parentbox">
-              {array3.map((el) => {
+              {concatArray.map((el) => {
                 return (
                   <div className="box">
                     <img

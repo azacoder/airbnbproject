@@ -1,49 +1,14 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import guestIcon from "../../assets/image/guest_icon.svg";
+import "./searchPage.css";
 import { useSelector } from "react-redux";
+import { HouseCart } from "../HouseCard/HouseCard";
 
 export const Search = () => {
   const stateCard = useSelector((state) => state.userHouse);
-
-  const linkServer =
-    "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
   return (
-    <div className="myCards">
+    <div className="search-box">
       {stateCard.map((el) => {
         return (
-          <Link to={`/product/${el.id}`} className="link">
-            <Container>
-              <Row>
-                <Col>
-                  <Card className="card-apart">
-                    <Card.Img
-                      variant="top"
-                      src={linkServer + el.image.path}
-                      className="card-img-listing"
-                    />
-                    <Card.Body>
-                      <span className="price">${el.price}/day</span>
-                      <b>
-                        <Card.Title class="card-title-listing">
-                          {el.title}
-                        </Card.Title>
-                      </b>
-                      <p className="card-header-adress">{el.address}</p>
-                      <Card.Footer className="card-footer">
-                        <img
-                          className="guest_icon"
-                          src={guestIcon}
-                          alt="guest_icon"
-                        />
-                        {el.numOfGuests} guests
-                      </Card.Footer>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Container>
-          </Link>
+          <HouseCart data={el} />
         );
       })}
     </div>
