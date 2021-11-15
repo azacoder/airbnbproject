@@ -1,5 +1,6 @@
 import "./SubmitAds.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState, useEffect } from "react";
 import {
   Container,
   Form,
@@ -7,7 +8,6 @@ import {
   ButtonGroup,
   Spinner,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
 import Fetch from "../../api/request";
 import { Redirect } from "react-router";
 
@@ -40,6 +40,106 @@ export const SubmitAds = () => {
     imageId: false,
     price: false,
   });
+
+  useEffect(() => {
+    Fetch("cities/all", { method: "GET" }).then((result) => {
+      setCityes(result);
+      setIsLoaded(false);
+    })
+  }, []);
+
+  function uploadFile() {
+    var formData = new FormData();
+
+    formData.append(`image`, img);
+    const token = localStorage.getItem("IdTokenGoogle");
+    fetch(
+      "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/listing/upload/image",
+      {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      }
+    )
+      .then((response) => response.json())
+      .then((success) => {
+        const resultData = {
+          ...formValues,
+          imageId: success.imageId,
+        };
+
+        adPost(resultData);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  const adPost = (dataToSave) => {
+    Fetch("listing/add", {
+      method: "POST",
+      body: dataToSave,
+    }).then((response) => {
+      console.log(response);
+      setSuccesAd(true);
+    })
+      .catch((error) => { })
+
+  }
+
+  const chancherBlurStatus = (e) => {
+    setBlurStatus({
+      ...blurStatus,
+      [e.target.name]: true,
+    });
+  };
+
+  const houseFunc = (e) => {
+    setStatusHouse(true);
+    setStatusApart(false);
+    const btnValue = e.target.outerText;
+    setFormValues({
+      ...formValues,
+      [e.target.name]: btnValue,
+    });
+    setBlurStatus({
+      ...blurStatus,
+      [e.target.name]: true,
+    });
+  };
+
+  const apartFunc = (e) => {
+    setStatusApart(true);
+    setStatusHouse(false);
+    const btnValue = e.target.outerText;
+    setFormValues({
+      ...formValues,
+      [e.target.name]: btnValue,
+    });
+
+    setBlurStatus({
+      ...blurStatus,
+      [e.target.name]: true,
+    });
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setFormValues({
+      ...formValues,
+      [e.target.name]: value,
+    });
+  };
+
+  const handleChangeNumber = (e) => {
+    const value = e.target.value;
+    setFormValues({
+      ...formValues,
+      [e.target.name]: Number(value),
+    });
+  };
+
+  const imgFunc = (e) => {
+    setImg(e.target.files[0]);
+  };
 
   const btnStyle =
     formValues.type !== "" &&
@@ -86,122 +186,8 @@ export const SubmitAds = () => {
   const messageImage =
     formValues.price !== "" && !blurStatus.imageId ? "Choose the image" : " ";
 
-  const chancherBlurStatus = (e) => {
-    setBlurStatus({
-      ...blurStatus,
-      [e.target.name]: true,
-    });
-  };
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setFormValues({
-      ...formValues,
-      [e.target.name]: value,
-    });
-  };
-
-  const handleChangeNumber = (e) => {
-    const value = e.target.value;
-    setFormValues({
-      ...formValues,
-      [e.target.name]: Number(value),
-    });
-  };
-
-  const houseFunc = (e) => {
-    setStatusHouse(true);
-    setStatusApart(false);
-    const btnValue = e.target.outerText;
-    setFormValues({
-      ...formValues,
-      [e.target.name]: btnValue,
-    });
-    setBlurStatus({
-      ...blurStatus,
-      [e.target.name]: true,
-    });
-  };
-
-  const apartFunc = (e) => {
-    setStatusApart(true);
-    setStatusHouse(false);
-    const btnValue = e.target.outerText;
-    setFormValues({
-      ...formValues,
-      [e.target.name]: btnValue,
-    });
-
-    setBlurStatus({
-      ...blurStatus,
-      [e.target.name]: true,
-    });
-  };
-
   const btnVarHouse = statusHouse === true ? "primary" : "outline-primary";
   const btnVarApart = statusApart === true ? "primary" : "outline-primary";
-
-  const imgFunc = (e) => {
-    setImg(e.target.files[0]);
-  };
-
-  useEffect(() => {
-    fetch(
-      "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/cities/all",
-      {
-        method: "GET",
-      }
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("token is not correct");
-        }
-        return res.json();
-      })
-      .then((result) => {
-        setCityes(result);
-        setIsLoaded(false);
-      })
-      .catch((error) => {
-        localStorage.removeItem("IdTokenGoogle");
-        setIsLoaded(false);
-      });
-  }, []);
-
-  function uploadFile() {
-    var formData = new FormData();
-
-    formData.append(`image`, img);
-    const token = localStorage.getItem("IdTokenGoogle");
-    fetch(
-      "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/listing/upload/image",
-      {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
-        body: formData,
-      }
-    )
-      .then((response) => response.json())
-      .then((success) => {
-        const resultData = {
-          ...formValues,
-          imageId: success.imageId,
-        };
-
-        adPost(resultData);
-      })
-      .catch((error) => console.log(error));
-  }
-
-  async function adPost(dataToSave) {
-    try {
-      let data = await Fetch("listing/add", {
-        method: "POST",
-        body: dataToSave,
-      });
-      setSuccesAd(true);
-    } catch (error) { }
-  }
 
   if (successAd) {
     return <Redirect to="/successfullpage" />;
@@ -305,7 +291,7 @@ export const SubmitAds = () => {
                 name="cityId"
                 onClick={chancherBlurStatus}
               >
-                {cityes.data.map((el) => {
+                {cityes.map((el) => {
                   return <option value={el.id}>{el.title}</option>;
                 })}
               </Form.Control>
