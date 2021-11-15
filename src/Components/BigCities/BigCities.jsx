@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { houseAction } from "../../store/action/action";
 import { cityesAction } from "../../store/action/action";
+
 import search1 from "../../assets/image/search3.svg";
 import Bishkek from "../../assets/image/Bi.jpg";
 import JalalAbad from "../../assets/image/jal.jpg";
