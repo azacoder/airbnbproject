@@ -4,12 +4,12 @@ import { ListingCards } from "../../Components/ListingCards/ListingCards";
 import { BtnPopular } from "../../Components/BtnPopular/BtnPopular";
 import TwoCities from "../../Components/TwoCities/TwoCities";
 
-const MyContent = () => {
+const Content = () => {
   return (
     <>
       <BigCities />
       <BtnPopular />
-      <div className="list">
+      <div className="listings">
         <ListingCards />
       </div>
       <TwoCities />
@@ -17,4 +17,4 @@ const MyContent = () => {
   );
 };
 
-export default MyContent;
+export default Content;

@@ -1,8 +1,8 @@
 import "./ListcardView.css";
-import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import DatePicker from "react-datepicker";
 import { ModalBooking } from "./ModalBooking/ModalBooking";
 import homeIcon from "../../assets/image/homeIcon.svg";
 import Fetch from "../../api/request";
@@ -13,20 +13,12 @@ export const ListCardView = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [modalShow, setModalShow] = useState(false);
+
+
   const startDay = Date.parse(startDate);
   const endDay = Date.parse(endDate);
   const milseconds = 86400000;
   const rentalDays = (endDay - startDay + milseconds) / milseconds;
-  const btnStyle =
-    endDate === null || startDate === null
-      ? "btn disabled btn-secondary btn-mg "
-      : "btn active btn-primary btn-mg";
-  const endDateStatus = startDate === null ? true : false;
-
-  const ModalStatus = () => {
-    setModalShow(endDate === null || startDate === null ? false : true);
-  };
-
   const linkServer =
     " http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
 
@@ -36,33 +28,28 @@ export const ListCardView = () => {
     });
   }, []);
 
-  let CardFilter = homeListings.filter((el) => {
-    return el.id == id;
-  });
-  /* ***************Booking code**************** */
-  const startDateFromState = startDate === null ? new Date() : startDate;
-  console.log(startDateFromState);
-  const endDateFromState = endDate === null ? new Date() : endDate;
-  console.log(endDateFromState);
 
-  const startDateForServer = `${startDateFromState.getDate()}/${startDateFromState.getMonth() + 1
-    }/${startDateFromState.getFullYear()}`;
-  console.log(startDateForServer);
-
-  const endDateForServer = `${endDateFromState.getDate()}/${endDateFromState.getMonth() + 1
-    }/${endDateFromState.getFullYear()}`;
-  console.log(endDateForServer);
-
-  /* **************************************** */
-  git branch bugfix/resolve-conflicts-in-listcardview
   const postBooking = () => {
     Fetch(`listing/${CardFilter[0].id}/book`, {
       method: "POST",
       body: { checkIn: startDate, checkOut: endDate },
     });
   };
-  console.log(CardFilter);
-  /* ********************************* */
+
+
+  const btnStyle =
+    endDate === null || startDate === null
+      ? "btn disabled btn-secondary btn-mg "
+      : "btn active btn-primary btn-mg";
+  const endDateStatus = startDate === null ? true : false;
+  const ModalStatus = () => {
+    setModalShow(endDate === null || startDate === null ? false : true);
+  };
+
+  let CardFilter = homeListings.filter((el) => {
+    return el.id == id;
+  });
+
   return CardFilter.map((el) =>
   (
     <div className="title">
@@ -83,10 +70,10 @@ export const ListCardView = () => {
           <p className="house-info">{el.title}</p>
           <hr />
           <div>
-              <img className="userAvatar" src={el.host.avatar} alt="userAvatar" />
-              <span className="userName">{el.host.firstName}</span>
-              <span className="userName">{el.host.lastName}</span>
-            </div>
+            <img className="userAvatar" src={el.host.avatar} alt="userAvatar" />
+            <span className="userName">{el.host.firstName}</span>
+            <span className="userName">{el.host.lastName}</span>
+          </div>
           <hr />
           <p className="about-this-space">About this space</p>
           <div className='buttons'>
@@ -96,7 +83,7 @@ export const ListCardView = () => {
           <div className="description">{el.description}</div>
         </div>
 
-        <div className="bookingbox">
+        <div className="booking-box">
           <div className="book-in">
             <p className="price">${el.price}<span>/day</span></p>
             <hr />

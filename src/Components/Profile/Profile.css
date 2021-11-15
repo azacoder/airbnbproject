@@ -34,3 +34,13 @@
   margin-bottom: 5px;
   margin-right: 8px;
 }
+.user-info {
+  margin-left: 10px;
+  color: rgb(41, 40, 40);
+  font-weight: bold;
+}
+.stripe {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #0d6efd;
+}
