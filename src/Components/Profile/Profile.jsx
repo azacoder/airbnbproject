@@ -9,7 +9,8 @@ import { getAuth, signOut } from "@firebase/auth";
 import { useDispatch } from "react-redux";
 import { userAction } from "../../store/action/action";
 
-const Profile = (props) => {
+const Profile = () => {
+  const dataUser = useSelector((state) => state.userData);
   const dispatch = useDispatch()
   const auth = getAuth();
   const logOutFunc = () => {
@@ -22,7 +23,6 @@ const Profile = (props) => {
     });
   }
 
-  const dataUser = useSelector((state) => state.userData);
   return (
     <div class="right-menu">
       <Image className="avaImg" src={dataUser.avatar} roundedCircle />

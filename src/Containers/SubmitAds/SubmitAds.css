@@ -64,7 +64,35 @@ span {
   margin-bottom: 20px;
 }
 
-button:active{
-  background:olive;
+button:active {
+  background: blue;
+}
+.messageWarn {
+  color: red;
+  margin-left: 5px;
 }
 
+
+
+.quest-input {
+  width: 100px;
+}
+.quest-title {
+  width: 500px;
+}
+.quest-description {
+  height: 100px;
+  width: 500px;
+}
+.address {
+  width: 500px;
+}
+.town {
+  width: 500px;
+}
+
+
+.spinner{
+  width: 500px;
+  height: 500px;
+}

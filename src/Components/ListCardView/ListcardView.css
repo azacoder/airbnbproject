@@ -1,86 +1,109 @@
 .title {
-  margin-top: 130px;
+  max-width: 1349px;
+  margin: auto;
 }
 
 .adpage {
   display: flex;
   justify-content: space-around;
-  margin-left: 10px;
+  margin-left: 50px;
 }
 
-.bookingbox {
-  width: 400px;
-  height: 450px;
-  border: 1px solid rgb(202, 198, 198);
-  text-align: center;
-  margin-right: 150px;
-}
-
-hr {
-  width: 350px;
-}
-
-.bookpadding {
-  margin-left: 15px;
-}
-
-.notactivebtn {
-  background-color: red;
-}
-
-.activebtn {
-  background-color: blue;
-}
-.btn-listcard {
-  background-color: #fff0f6;
-  border: solid 1px #ffadd2;
-  color: #eb2f96;
-  padding: 5px;
-}
-
-.p-p {
-  color: #1d226c;
-  font-weight: 600;
-  font-size: 20px;
-}
-.div-dis {
-  margin-top: 30px;
-  margin-bottom: 50px;
-  width: 700px;
-}
-.p-p-p {
-  color: #1d226c;
-  font-weight: 600;
-  font-size: 25px;
-  margin-top: 20px;
-}
-.span-div span {
-  color: grey;
-}
-.img-div-card {
+.img-card {
   margin-bottom: 30px;
- 
 }
-.imgAd{
+
+.img-house {
   width: 500px;
   height: 350px;
 }
-.price {
-  color: #1d226c;
-  font-weight: 600;
-  font-size: 20px;
-  margin-top: 50px;
+
+.span-div span {
+  color: grey;
 }
-.p-button {
-  background-color: #ffe58f;
-  margin-top: 30px;
+
+span.cityname {
+  color: #0d6efd;
 }
+
 .homeicon {
   width: 22px;
   height: 22px;
   margin-bottom: 5px;
   margin-right: 5px;
 }
-span.cityname {
-  color: #0d6efd;
+
+.house-info {
+  color: #1d226c;
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.about-this-space {
+  color: #1d226c;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.buttons {
+  max-width: 200px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.house-and-guest {
+  background-color: #fff0f6;
+  border: solid 1px #ffadd2;
+  color: #eb2f96;
+  padding: 5px;
+}
+
+.description {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.book-in {
+  margin-left: 22px;
+}
+
+.price {
+  color: #1d226c;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.price span {
+  color: rgba(128, 128, 128, 0.568);
+}
+
+.check {
+  font-weight: bold;
+  margin-top: 22px;
+}
+
+hr {
+  width: 350px;
+}
+
+.last-text {
+  width: 180px;
+  background-color: #ffe58f;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+.userAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+.userName {
+  margin-left: 15px;
+  font-family: "Sacramento", cursive;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.35;
 }

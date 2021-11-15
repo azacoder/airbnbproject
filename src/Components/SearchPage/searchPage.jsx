@@ -1,17 +1,16 @@
-import { useSelector } from "react-redux";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import guestIcon from "../../assets/image/guest_icon.svg";
+import { useSelector } from "react-redux";
 
-export const Cities = () => {
+export const Search = () => {
+  const stateCard = useSelector((state) => state.userHouse);
 
-  const CityesFromStore = useSelector(state => state.cityData)
-  console.log('CityesFromStore', CityesFromStore);
-  const linkServer = 'http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/';
-  // "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/"; 
+  const linkServer =
+    "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/";
   return (
     <div className="myCards">
-      {CityesFromStore.map((el) => {
+      {stateCard.map((el) => {
         return (
           <Link to={`/product/${el.id}`} className="link">
             <Container>
@@ -37,7 +36,7 @@ export const Cities = () => {
                           src={guestIcon}
                           alt="guest_icon"
                         />
-                        for {el.numOfGuests} guests
+                        {el.numOfGuests} guests
                       </Card.Footer>
                     </Card.Body>
                   </Card>
@@ -49,4 +48,4 @@ export const Cities = () => {
       })}
     </div>
   );
-}
+};

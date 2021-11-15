@@ -1,29 +1,98 @@
 import "./SubmitAds.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Form, Button, ButtonGroup } from "react-bootstrap";
+import {
+  Container,
+  Form,
+  Button,
+  ButtonGroup,
+  Spinner,
+} from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Fetch from "../../api/request";
+import { Redirect } from "react-router";
 
 export const SubmitAds = () => {
-
   const [statusHouse, setStatusHouse] = useState(false);
   const [statusApart, setStatusApart] = useState(false);
   const [isLoaded, setIsLoaded] = useState(true);
-  const [img, setImg] = useState(" ");
+  const [img, setImg] = useState("");
   const [cityes, setCityes] = useState(" ");
+  const [successAd, setSuccesAd] = useState(false);
 
   const [formValues, setFormValues] = useState({
     type: "",
     numOfGuests: "",
     title: "",
     description: "",
-    address: " ",
+    address: "",
     cityId: "",
-    imageId: " ",
-    price: " ",
+    imageId: "",
+    price: "",
   });
-  console.log(formValues);
-  
+
+  const [blurStatus, setBlurStatus] = useState({
+    type: false,
+    numOfGuests: false,
+    title: false,
+    description: false,
+    address: false,
+    cityId: false,
+    imageId: false,
+    price: false,
+  });
+
+  const btnStyle =
+    formValues.type !== "" &&
+      formValues.numOfGuests !== "" &&
+      formValues.title !== "" &&
+      formValues.description !== "" &&
+      formValues.address !== "" &&
+      formValues.cityId !== "" &&
+      img !== "" &&
+      formValues.price !== ""
+      ? "btn active btn-primary btn-mg"
+      : "btn disabled btn-secondary btn-mg ";
+
+  const messageType =
+    formValues.numOfGuests !== "" && !blurStatus.type
+      ? "Choose the type of House"
+      : " ";
+
+  const messageNumOfGuests =
+    formValues.numOfGuests === 0 ||
+      (formValues.numOfGuests === "" && blurStatus.numOfGuests)
+      ? "Enter the number of guests"
+      : " ";
+
+  const messageTitle =
+    formValues.title === "" && blurStatus.title ? "Enter title" : " ";
+
+  const messageDescpiton =
+    formValues.description === "" && blurStatus.description
+      ? "Enter description"
+      : " ";
+
+  const messageAddress =
+    formValues.address === "" && blurStatus.address ? "Enter the address" : " ";
+
+  const messsagePrice =
+    formValues.price === 0 || (formValues.price === "" && blurStatus.price)
+      ? "Enter the price"
+      : " ";
+
+  const messageCityes =
+    img !== "" && !blurStatus.cityId ? "Choose the city" : " ";
+
+  const messageImage =
+    formValues.price !== "" && !blurStatus.imageId ? "Choose the image" : " ";
+
+  const chancherBlurStatus = (e) => {
+    setBlurStatus({
+      ...blurStatus,
+      [e.target.name]: true,
+    });
+  };
+
   const handleChange = (e) => {
     const value = e.target.value;
     setFormValues({
@@ -48,7 +117,12 @@ export const SubmitAds = () => {
       ...formValues,
       [e.target.name]: btnValue,
     });
+    setBlurStatus({
+      ...blurStatus,
+      [e.target.name]: true,
+    });
   };
+
   const apartFunc = (e) => {
     setStatusApart(true);
     setStatusHouse(false);
@@ -57,19 +131,20 @@ export const SubmitAds = () => {
       ...formValues,
       [e.target.name]: btnValue,
     });
+
+    setBlurStatus({
+      ...blurStatus,
+      [e.target.name]: true,
+    });
   };
- 
+
   const btnVarHouse = statusHouse === true ? "primary" : "outline-primary";
   const btnVarApart = statusApart === true ? "primary" : "outline-primary";
 
-  /* *******************  */
   const imgFunc = (e) => {
-    console.log(e.target.files);
     setImg(e.target.files[0]);
   };
 
-  console.log(img);
-  
   useEffect(() => {
     fetch(
       "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/cities/all",
@@ -88,19 +163,16 @@ export const SubmitAds = () => {
         setIsLoaded(false);
       })
       .catch((error) => {
-        console.log(error);
         localStorage.removeItem("IdTokenGoogle");
         setIsLoaded(false);
       });
   }, []);
- 
 
   function uploadFile() {
     var formData = new FormData();
 
     formData.append(`image`, img);
     const token = localStorage.getItem("IdTokenGoogle");
-    console.log(token);
     fetch(
       "http://ec2-3-127-145-151.eu-central-1.compute.amazonaws.com:8000/api/listing/upload/image",
       {
@@ -111,7 +183,6 @@ export const SubmitAds = () => {
     )
       .then((response) => response.json())
       .then((success) => {
-        console.log(success);
         const resultData = {
           ...formValues,
           imageId: success.imageId,
@@ -121,28 +192,25 @@ export const SubmitAds = () => {
       })
       .catch((error) => console.log(error));
   }
-  console.log(formValues);
 
   async function adPost(dataToSave) {
-    const token = localStorage.getItem("IdTokenGoogle");
-    console.log(dataToSave);
     try {
       let data = await Fetch("listing/add", {
         method: "POST",
         body: dataToSave,
       });
-
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+      setSuccesAd(true);
+    } catch (error) { }
   }
 
+  if (successAd) {
+    return <Redirect to="/successfullpage" />;
+  }
 
   return (
     <>
       {isLoaded ? (
-        <p>Loading....</p>
+        <Spinner className='spinner' animation="border" />
       ) : (
         <Container className="Submit--Ads">
           <Form>
@@ -164,29 +232,34 @@ export const SubmitAds = () => {
                 HOUSE
               </Button>
             </ButtonGroup>
+            <p className="messageWarn">{messageType}</p>
             <Form.Group className="mb-3" controlId="fornGroupGuest">
               <Form.Label>
                 <span>*</span> Max # of Guests
               </Form.Label>
               <Form.Control
-                style={{ width: "100px" }}
+                className='quest-input'
                 type="number"
                 placeholder="4"
                 onChange={handleChangeNumber}
                 name="numOfGuests"
+                onBlur={chancherBlurStatus}
               />
+              <p className="messageWarn">{messageNumOfGuests}</p>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupTitle">
               <Form.Label>
                 <span>*</span> Title
               </Form.Label>
               <Form.Control
-                style={{ width: "500px" }}
+                className='quest-title'
                 type="text"
-                placeholder="The iconic and luxurious Bel-Air mansion"
+                placeholder="The iconic and luxurious Ala-Archa mansion."
                 onChange={handleChange}
                 name="title"
+                onBlur={chancherBlurStatus}
               />
+              <p className="messageWarn">{messageTitle}</p>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupArea">
               <Form.Label>
@@ -195,13 +268,15 @@ export const SubmitAds = () => {
               <Form.Control
                 as="textarea"
                 placeholder="
-              Modern, clean, and iconic home of the Fresh Prince.
-              Situated in the heart of Bel-Air, Los Angeles.
+                Modern, clean and iconic Garden Hotel.
+                Located in the center of Bishkek, Kyrgyzstan.
             "
-                style={{ height: "100px", width: "500px" }}
+                className='quest-description'
                 onChange={handleChange}
                 name="description"
+                onBlur={chancherBlurStatus}
               />
+              <p className="messageWarn">{messageDescpiton}</p>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formGroupAddress">
@@ -209,12 +284,14 @@ export const SubmitAds = () => {
                 <span>*</span> Address
               </Form.Label>
               <Form.Control
-                style={{ width: "500px" }}
+                className='address'
                 type="text"
                 placeholder="Address"
                 onChange={handleChange}
                 name="address"
+                onBlur={chancherBlurStatus}
               />
+              <p className="messageWarn">{messageAddress}</p>
             </Form.Group>
             <Form.Group controlId="formGridState">
               <Form.Label>
@@ -222,21 +299,28 @@ export const SubmitAds = () => {
               </Form.Label>
               <Form.Control
                 as="select"
-                style={{ width: "500px" }}
+                className='town'
                 defaultValue="Choose..."
                 onChange={handleChange}
                 name="cityId"
+                onClick={chancherBlurStatus}
               >
                 {cityes.data.map((el) => {
                   return <option value={el.id}>{el.title}</option>;
                 })}
               </Form.Control>
+              <p className="messageWarn">{messageCityes}</p>
             </Form.Group>
             <Form.Group>
               <Form.Label>
                 <span>*</span>Image
               </Form.Label>
-              <Form.File onChange={imgFunc} />
+              <Form.File
+                onChange={imgFunc}
+                onBlur={chancherBlurStatus}
+                name="imageId"
+              />
+              <p className="messageWarn">{messageImage}</p>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupPrice">
               <Form.Label>
@@ -248,9 +332,11 @@ export const SubmitAds = () => {
                 placeholder="120"
                 onChange={handleChangeNumber}
                 name="price"
+                onBlur={chancherBlurStatus}
               />
+              <p className="messageWarn">{messsagePrice}</p>
             </Form.Group>
-            <Button onClick={uploadFile} variant="primary">
+            <Button className={btnStyle} onClick={uploadFile}>
               Submit
             </Button>
           </Form>
